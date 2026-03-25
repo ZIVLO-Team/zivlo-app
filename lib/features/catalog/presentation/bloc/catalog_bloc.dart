@@ -128,25 +128,22 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
     Product? existingProduct;
     existingResult.fold(
-      (_) => null,
+      (failure) {
+        emit(CatalogError(failure.message));
+      },
       (products) {
-        existingProduct = products.firstWhere(
-          (p) => p.id == event.product.id,
-          orElse: () => Product(
-            id: '',
-            name: '',
-            price: 0,
-            stock: 0,
-            createdAt: DateTime.now(),
-          ),
-        );
+        final found = products.where((p) => p.id == event.product.id).firstOrNull;
+        if (found != null) {
+          existingProduct = found;
+        } else {
+          emit(CatalogError('Product not found'));
+        }
       },
     );
 
-    // Validate existing product
-    if (existingProduct == null || existingProduct.id.isEmpty) {
-      emit(CatalogError('Product not found'));
-      return;
+    // Validate existing product was found
+    if (existingProduct == null) {
+      return; // Error already emitted above
     }
 
     final product = event.product.toEntity(
