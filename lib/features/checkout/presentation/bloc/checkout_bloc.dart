@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fpdart/fpdart.dart';
 
-import 'package:zivlo/core/error/failures.dart';
 import 'package:zivlo/features/checkout/domain/value_objects/payment.dart';
 import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 import 'package:zivlo/features/checkout/application/usecases/process_payment.dart';
@@ -126,12 +124,13 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       final total = currentState.summary.total;
 
       // Calculate change
-      final changeResult = calculateChange.execute(
+      final change = calculateChange.execute(
         total: total,
         amountReceived: event.amount,
+      ).fold(
+        (failure) => 0.0,
+        (value) => value,
       );
-
-      final change = changeResult.getOrElse(() => 0.0);
       final isValid = event.amount >= total;
 
       emit(currentState.copyWith(
@@ -145,12 +144,13 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       final remainingAfterCard = total - _cardAmount;
 
       // Calculate change from cash portion
-      final changeResult = calculateChange.execute(
+      final change = calculateChange.execute(
         total: remainingAfterCard,
         amountReceived: event.amount,
+      ).fold(
+        (failure) => 0.0,
+        (value) => value,
       );
-
-      final change = changeResult.getOrElse(() => 0.0);
       final remainingAmount = remainingAfterCard - event.amount;
       final isValid = (event.amount + _cardAmount) >= total;
 
@@ -176,12 +176,13 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       final remainingAfterCard = total - event.amount;
 
       // Calculate change from cash portion
-      final changeResult = calculateChange.execute(
+      final change = calculateChange.execute(
         total: remainingAfterCard,
         amountReceived: _cashAmount,
+      ).fold(
+        (failure) => 0.0,
+        (value) => value,
       );
-
-      final change = changeResult.getOrElse(() => 0.0);
       final remainingAmount = remainingAfterCard - _cashAmount;
       final isValid = (_cashAmount + event.amount) >= total;
 
@@ -272,9 +273,13 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       cardAmount: method == PaymentMethod.mixed ? _cardAmount : null,
     );
 
-    if (validationResult.isLeft()) {
-      final failure = validationResult.getLeft()!;
-      emit(CheckoutError(failure.message));
+    final validationError = validationResult.fold(
+      (failure) => failure.message,
+      (_) => null,
+    );
+
+    if (validationError != null) {
+      emit(CheckoutError(validationError));
       return;
     }
 

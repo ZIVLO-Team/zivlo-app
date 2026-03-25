@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           context.push('/scanner');
         },
-        icon: const Icon(Icons.barcode_scanner),
+        icon: const Icon(Icons.qr_code_scanner),
         label: const Text('Escanear'),
       ),
     );

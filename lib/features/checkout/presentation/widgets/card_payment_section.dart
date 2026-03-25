@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:zivlo/core/theme/app_theme.dart';
-import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart' as checkout_dto;
+
 /// Card Payment Section Widget
 /// Displays card payment confirmation UI
 class CardPaymentSection extends StatelessWidget {
-  final CheckoutSummaryData summary;
+  final checkout_dto.CheckoutSummary summary;
   final VoidCallback onConfirmPayment;
 
   const CardPaymentSection({

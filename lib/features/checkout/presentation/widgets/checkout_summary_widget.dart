@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:zivlo/core/theme/app_theme.dart';
-import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart' as checkout_dto;
+
 /// Checkout Summary Widget
 /// Displays the order summary including items, subtotal, discount, and total
 class CheckoutSummary extends StatelessWidget {
-  final CheckoutSummaryData summary;
+  final checkout_dto.CheckoutSummary summary;
   final bool expanded;
 
   const CheckoutSummary({
@@ -67,8 +68,8 @@ class CheckoutSummary extends StatelessWidget {
               _buildSummaryRow(
                 label: 'Descuento',
                 value: summary.formattedDiscount,
-                valueColor: summary.discount > 0 
-                    ? AppColors.colorSuccess 
+                valueColor: summary.discount > 0
+                    ? AppColors.colorSuccess
                     : AppColors.colorOnSurfaceMuted,
               ),
 
@@ -147,49 +148,6 @@ class CheckoutSummary extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// Data class for checkout summary display
-class CheckoutSummaryData {
-  final int itemCount;
-  final int totalQuantity;
-  final double subtotal;
-  final double discount;
-  final double total;
-
-  const CheckoutSummaryData({
-    required this.itemCount,
-    required this.totalQuantity,
-    required this.subtotal,
-    required this.discount,
-    required this.total,
-  });
-
-  String get formattedSubtotal => '\$${subtotal.toStringAsFixed(2)}';
-  
-  String get formattedDiscount {
-    if (discount <= 0) return 'Sin descuento';
-    return '-\$${discount.toStringAsFixed(2)}';
-  }
-  
-  String get formattedTotal => '\$${total.toStringAsFixed(2)}';
-  
-  String get itemsSummary {
-    if (itemCount == 1) {
-      return '$totalQuantity producto';
-    }
-    return '$itemCount productos ($totalQuantity unidades)';
-  }
-
-  factory CheckoutSummaryData.fromSummary(dynamic summary) {
-    return CheckoutSummaryData(
-      itemCount: summary.itemCount,
-      totalQuantity: summary.totalQuantity,
-      subtotal: summary.subtotal,
-      discount: summary.discount,
-      total: summary.total,
     );
   }
 }

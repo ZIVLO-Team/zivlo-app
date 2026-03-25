@@ -138,7 +138,7 @@ class PaymentMethodBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.spacing12,
-        vertical: AppSpacing.spacing6,
+        vertical: AppSpacing.spacing8,
       ),
       decoration: BoxDecoration(
         color: AppColors.colorPrimary.withOpacity(0.2),

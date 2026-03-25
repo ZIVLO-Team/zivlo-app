@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:zivlo/core/theme/app_theme.dart';
-import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart' as checkout_dto;
+
 /// Mixed Payment Section Widget
 /// Displays combined cash + card payment UI
 class MixedPaymentSection extends StatelessWidget {
-  final CheckoutSummaryData summary;
+  final checkout_dto.CheckoutSummary summary;
   final double? cashAmount;
   final double? cardAmount;
   final double remainingAmount;

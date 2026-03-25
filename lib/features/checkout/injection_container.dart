@@ -1,4 +1,3 @@
-import 'package:get_it/get_it.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
@@ -11,9 +10,7 @@ import 'package:zivlo/features/checkout/domain/repositories/cart_repository.dart
 // Infrastructure - Repositories (Implementations)
 import 'package:zivlo/features/checkout/infrastructure/repositories/hive_checkout_repository.dart';
 import 'package:zivlo/features/checkout/infrastructure/repositories/in_memory_cart_repository.dart';
-// Infrastructure - Hive Models
-import 'package:zivlo/features/checkout/infrastructure/models/sale_hive_model.dart';
-import 'package:zivlo/features/checkout/infrastructure/models/sale_item_hive_model.dart';
+
 // Application - Use Cases
 import 'package:zivlo/features/checkout/application/usecases/process_payment.dart';
 import 'package:zivlo/features/checkout/application/usecases/calculate_change.dart';

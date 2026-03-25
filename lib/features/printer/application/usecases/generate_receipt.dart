@@ -80,7 +80,7 @@ class GenerateReceipt {
       case 'mixed':
         return 'Mixto';
       default:
-        return methodName.capitalize();
+        return methodName[0].toUpperCase() + methodName.substring(1);
     }
   }
 }

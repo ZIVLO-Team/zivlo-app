@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import 'package:zivlo/core/theme/app_theme.dart';
 import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
-import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
 import 'package:zivlo/features/checkout/presentation/bloc/checkout_bloc.dart';
 import 'package:zivlo/features/checkout/presentation/bloc/checkout_event.dart';
 import 'package:zivlo/features/checkout/presentation/bloc/checkout_state.dart';

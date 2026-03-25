@@ -31,16 +31,16 @@ class ReceiptConfig extends Equatable {
   /// Factory constructor for 58mm paper (most common for portable printers)
   factory ReceiptConfig.paper58mm() {
     return const ReceiptConfig(
-      paperWidthMm = 58,
-      charactersPerLine = 32,
+      paperWidthMm: 58,
+      charactersPerLine: 32,
     );
   }
 
   /// Factory constructor for 80mm paper (desktop printers)
   factory ReceiptConfig.paper80mm() {
     return const ReceiptConfig(
-      paperWidthMm = 80,
-      charactersPerLine = 48,
+      paperWidthMm: 80,
+      charactersPerLine: 48,
     );
   }
 

@@ -26,9 +26,11 @@ class PrintReceipt {
   Future<Either<Failure, Unit>> execute(Receipt receipt) async {
     try {
       // Check if printer is connected
-      final connectionCheck = await printerPort.isConnected();
-      
-      final isConnected = connectionCheck.getOrElse(() => false);
+      final isConnected = await printerPort.isConnected().fold(
+        (failure) => false,
+        (connected) => connected,
+      );
+
       if (!isConnected) {
         return Left(const PrinterOperationFailure(
           operation: 'print',

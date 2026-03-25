@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:zivlo/core/theme/app_theme.dart';
-import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart' as checkout_dto;
+
 /// Cash Payment Section Widget
 /// Displays cash input field and change calculator
 class CashPaymentSection extends StatelessWidget {
-  final CheckoutSummaryData summary;
+  final checkout_dto.CheckoutSummary summary;
   final double? cashAmount;
   final double? change;
   final bool isValid;
