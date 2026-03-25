@@ -2,10 +2,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:zivlo/lib/core/error/failures.dart';
-import 'package:zivlo/lib/features/catalog/domain/entities/product.dart';
-import 'package:zivlo/lib/features/catalog/domain/repositories/product_repository.dart';
-import 'package:zivlo/lib/features/catalog/infrastructure/models/product_hive_model.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
+import 'package:zivlo/features/catalog/domain/repositories/product_repository.dart';
+import 'package:zivlo/features/catalog/infrastructure/models/product_hive_model.dart';
 
 /// Hive implementation of IProductRepository
 /// Handles all local database operations for products

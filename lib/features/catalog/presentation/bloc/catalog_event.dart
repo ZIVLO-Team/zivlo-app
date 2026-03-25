@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:zivlo/lib/features/catalog/application/dtos/product_dto.dart';
+import 'package:zivlo/features/catalog/application/dtos/product_dto.dart';
 
 /// Catalog Event - Base class
 abstract class CatalogEvent extends Equatable {
