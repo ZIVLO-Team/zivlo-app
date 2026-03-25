@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:zivlo/core/theme/app_theme.dart';
 import 'package:zivlo/features/catalog/injection_container.dart' as catalog_di;

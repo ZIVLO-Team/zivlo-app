@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fpdart/fpdart.dart';
 
 import 'package:zivlo/features/catalog/domain/entities/product.dart';
-import 'package:zivlo/features/catalog/domain/repositories/product_repository.dart';
 import 'package:zivlo/features/catalog/application/usecases/product_usecases.dart';
 import 'package:zivlo/features/catalog/application/dtos/product_dto.dart';
 import 'catalog_event.dart';

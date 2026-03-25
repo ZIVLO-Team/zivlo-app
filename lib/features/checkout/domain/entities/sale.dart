@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'sale_item.dart';
-import 'value_objects/payment_method.dart';
+import '../value_objects/payment_method.dart';
 
 /// Sale Entity
 /// Represents an immutable transaction record after payment is completed

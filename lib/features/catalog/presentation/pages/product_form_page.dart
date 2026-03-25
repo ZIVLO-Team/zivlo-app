@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:zivlo/core/theme/app_theme.dart';
 import 'package:zivlo/features/catalog/application/dtos/product_dto.dart';
@@ -263,7 +261,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
     }
 
     final dto = ProductDTO(
-      id: _isEditing && widget.product != null ? widget.product.id : null,
+      id: _isEditing && widget.product != null ? widget.product!.id : null,
       name: _nameController.text.trim(),
       price: double.parse(_priceController.text),
       barcode: _barcodeController.text.trim().isEmpty

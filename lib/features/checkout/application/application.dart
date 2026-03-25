@@ -2,7 +2,6 @@
 
 // DTOs
 export 'dtos/payment_dto.dart';
-export 'usecases/get_checkout_summary.dart';
 
 // Use Cases
 export 'usecases/process_payment.dart';

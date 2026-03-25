@@ -111,5 +111,5 @@ class ValidatePayment {
 
 /// Failure for payment validation errors
 class PaymentValidationFailure extends Failure {
-  const PaymentValidationFailure(super.message);
+  const PaymentValidationFailure(String message) : super(message: message);
 }

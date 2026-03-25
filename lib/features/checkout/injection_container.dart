@@ -2,6 +2,9 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
+// Global service locator
+import 'package:zivlo/injection_container.dart';
+
 // Domain - Repositories (Ports)
 import 'package:zivlo/features/checkout/domain/repositories/checkout_repository.dart';
 import 'package:zivlo/features/checkout/domain/repositories/cart_repository.dart';

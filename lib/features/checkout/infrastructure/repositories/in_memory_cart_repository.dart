@@ -103,7 +103,7 @@ class InMemoryCartRepository implements ICartRepository {
       // Check if product is already in cart
       final existingItem = _items.values.firstWhere(
         (item) => item.product.id == product.id,
-        orElse: () => const CartItem(id: '', product: Product(id: '', name: '', price: 0, stock: 0, createdAt: null), quantity: 0),
+        orElse: () => CartItem(id: '', product: Product(id: '', name: '', price: 0, stock: 0, createdAt: DateTime(0)), quantity: 0),
       );
 
       if (existingItem.id.isNotEmpty) {
