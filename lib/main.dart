@@ -48,7 +48,7 @@ class ZivloApp extends StatelessWidget {
             elevation: 0,
             centerTitle: false,
           ),
-          cardTheme: CardTheme(
+          cardTheme: CardThemeData(
             color: AppColors.colorSurface,
             elevation: 2,
             shape: RoundedRectangleBorder(
