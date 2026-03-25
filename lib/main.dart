@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'injection_container.dart' as di;
 import 'core/theme/app_theme.dart';
+import 'core/router/app_router.dart';
 
 void main() async {
   // Ensure Flutter bindings are initialized
@@ -23,9 +24,10 @@ class ZivloApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: di.getBlocProviders(),
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Zivlo',
         debugShowCheckedModeBanner: false,
+        routerConfig: AppRouter.router,
         theme: ThemeData(
           useMaterial3: true,
           brightness: Brightness.dark,
@@ -97,38 +99,6 @@ class ZivloApp extends StatelessWidget {
             contentPadding: const EdgeInsets.symmetric(
               horizontal: AppSpacing.spacing16,
               vertical: AppSpacing.spacing12,
-            ),
-          ),
-        ),
-        home: const Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.point_of_sale,
-                  size: 80,
-                  color: AppColors.colorAccent,
-                ),
-                SizedBox(height: AppSpacing.spacing24),
-                Text(
-                  'Zivlo',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.colorOnSurface,
-                  ),
-                ),
-                SizedBox(height: AppSpacing.spacing8),
-                Text(
-                  'Cobra en segundos. Sin internet. Sin complicaciones.',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColors.colorOnSurfaceMuted,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
             ),
           ),
         ),
