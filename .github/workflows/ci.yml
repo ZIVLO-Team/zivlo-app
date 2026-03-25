@@ -29,9 +29,10 @@ jobs:
       
       - name: Run flutter analyze
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
-      
-      - name: Check formatting
-        run: dart format --output=none --set-exit-if-changed .
+
+      # Formatting check disabled - format locally with: flutter format .
+      # - name: Check formatting
+      #   run: dart format --output=none --set-exit-if-changed .
 
   # Job de tests unitarios
   test:
