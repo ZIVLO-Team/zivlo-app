@@ -2,6 +2,7 @@
 
 [![CI/CD](https://img.shields.io/github/actions/workflow/status/mowgliph/zivlo/ci.yml?branch=main&style=for-the-badge&logo=github-actions&logoColor=white&color=1A1A2E)](https://github.com/mowgliph/zivlo/actions)
 [![Release](https://img.shields.io/github/v/release/mowgliph/zivlo?style=for-the-badge&logo=github&logoColor=white&color=E94560)](https://github.com/mowgliph/zivlo/releases)
+[![Downloads](https://img.shields.io/github/downloads/mowgliph/zivlo/latest/total)](https://github.com/mowgliph/zivlo/releases/latest)
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
 [![License](https://img.shields.io/github/license/mowgliph/zivlo?style=for-the-badge&color=00D97E)](LICENSE)
 
@@ -43,31 +44,32 @@ Zivlo convierte tu Android en una caja registradora completa. Escanea productos 
 
 ---
 
-## 🚀 Instalación
+## 📥 Descargas
 
-### Opción 1: GitHub Releases (Recomendado)
+### Última Versión
 
-1. Ve a la página de [Releases](https://github.com/mowgliph/zivlo/releases)
-2. Descarga el último APK (`app-release.apk`)
-3. Habilita "Instalar aplicaciones de fuentes desconocidas" en tu Android
-4. Instala el APK y listo
+| Arquitectura | Dispositivos | Descarga |
+|-------------|--------------|----------|
+| **arm64-v8a** | Modernos (64-bit) | [Descargar APK](https://github.com/mowgliph/zivlo/releases/latest/download/zivlo-latest-arm64-v8a.apk) |
+| armeabi-v7a | Antiguos (32-bit) | [Descargar APK](https://github.com/mowgliph/zivlo/releases/latest/download/zivlo-latest-armeabi-v7a.apk) |
+| x86_64 | Emuladores | [Descargar APK](https://github.com/mowgliph/zivlo/releases/latest/download/zivlo-latest-x86_64.apk) |
 
-### Opción 2: Build Local (Solo desarrolladores)
+📦 **Google Play**: [Zivlo en Play Store](#) (próximamente)
 
-```bash
-# Clona el repositorio
-git clone https://github.com/mowgliph/zivlo.git
-cd zivlo
+🔐 **Verificar Integridad**: [checksums-latest.txt](https://github.com/mowgliph/zivlo/releases/latest/download/checksums-latest.txt)
 
-# El build lo hace GitHub Actions automáticamente
-# Para build manual (requiere Flutter instalado):
-flutter build apk --release
-```
+### Instalación
 
-**Requisitos**:
-- Android 6.0 (API 23) o superior
-- Cámara con autofocus
-- Impresora térmica Bluetooth (opcional, 58mm o 80mm)
+1. Descargar el APK según tu arquitectura
+2. Habilitar "Instalar aplicaciones de fuentes desconocidas" en tu dispositivo Android
+3. Abrir el APK descargado y seguir las instrucciones de instalación
+4. ¡Listo! La aplicación se instalará automáticamente
+
+### ¿Cuál arquitectura usar?
+
+- **arm64-v8a**: 95% de dispositivos Android modernos (2019+) - **Recomendado**
+- **armeabi-v7a**: Dispositivos anteriores a 2019
+- **x86_64**: Solo emuladores de Android Studio
 
 ---
 
