@@ -27,8 +27,12 @@ dependencies:
   # Hardware - Escáner de código de barras
   mobile_scanner: ^5.1.1
 
-  # Hardware - Impresora Bluetooth
-  blue_thermal_printer: ^1.2.3
+  # Hardware - Impresora Bluetooth (TEMPORALMENTE COMENTADO - problema de namespace)
+  # blue_thermal_printer: ^1.2.3
+  # Alternativas a evaluar:
+  # - esc_pos_bluetooth
+  # - bluetooth_print
+  # - pos_universal_printer
 
   # Inyección de dependencias - GetIt
   get_it: ^7.6.4
