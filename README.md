@@ -10,8 +10,6 @@
 
 Zivlo convierte tu Android en una caja registradora completa. Escanea productos con la cámara, cobra en efectivo o tarjeta e imprime el recibo en segundos — sin necesidad de internet ni hardware costoso.
 
-![Zivlo Banner](docs/assets/banner.png)
-
 ---
 
 ## ✨ Características
@@ -23,14 +21,6 @@ Zivlo convierte tu Android en una caja registradora completa. Escanea productos 
 - 📊 **Historial de ventas** — Consulta transacciones por fecha con resumen diario
 - 📦 **Gestión de catálogo** — Crea y edita productos con stock y categorías
 - 🚫 **100% offline** — Funciona sin internet, sin suscripciones, sin complicaciones
-
----
-
-## 📱 Capturas de Pantalla
-
-| Escáner | Carrito | Pago | Recibo |
-|---------|---------|------|--------|
-| ![Scanner](docs/assets/scanner.png) | ![Cart](docs/assets/cart.png) | ![Checkout](docs/assets/checkout.png) | ![Receipt](docs/assets/receipt.png) |
 
 ---
 
