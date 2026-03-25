@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'injection_container.dart' as di;
 import 'core/theme/app_theme.dart';
+import 'features/cart/presentation/bloc/cart_bloc.dart';
+import 'features/cart/presentation/bloc/cart_event.dart';
+import 'features/cart/presentation/bloc/cart_state.dart';
+import 'features/catalog/domain/entities/product.dart';
 
 void main() async {
   // Ensure Flutter bindings are initialized
@@ -100,39 +104,239 @@ class ZivloApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        home: const CartTestPage(),
+      ),
+    );
+  }
+}
+
+/// Test Page for Cart Feature
+/// This is a temporary page to test the Cart BLoC
+class CartTestPage extends StatefulWidget {
+  const CartTestPage({super.key});
+  
+  @override
+  State<CartTestPage> createState() => _CartTestPageState();
+}
+
+class _CartTestPageState extends State<CartTestPage> {
+  @override
+  void initState() {
+    super.initState();
+    // Load cart on init
+    context.read<CartBloc>().add(LoadCart());
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Zivlo - Cart Test'),
+        actions: [
+          // Cart badge
+          BlocBuilder<CartBloc, CartState>(
+            builder: (context, state) {
+              if (state is CartLoaded) {
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Text(
+                      'Ítems: ${state.cart.itemCount}',
+                      style: const TextStyle(
+                        color: AppColors.colorOnSurface,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+        ],
+      ),
+      body: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          if (state is CartLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          
+          if (state is CartError) {
+            return Center(child: Text('Error: ${state.message}'));
+          }
+          
+          if (state is CartLoaded) {
+            final cart = state.cart;
+            
+            if (cart.isEmpty) {
+              return const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 80,
+                      color: AppColors.colorOnSurfaceMuted,
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Carrito vacío',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.colorOnSurfaceMuted,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }
+            
+            return ListView(
+              padding: const EdgeInsets.all(16),
               children: [
-                // TODO: Add splash screen
-                Icon(
-                  Icons.point_of_sale,
-                  size: 80,
-                  color: AppColors.colorAccent,
-                ),
-                SizedBox(height: AppSpacing.spacing24),
-                Text(
-                  'Zivlo',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.colorOnSurface,
+                // Cart items
+                ...cart.items.map((item) => Card(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  child: ListTile(
+                    title: Text(item.product.name),
+                    subtitle: Text('Precio: \$${item.unitPrice.toStringAsFixed(2)}'),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'x${item.quantity}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        IconButton(
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            // Decrease quantity
+                            if (item.quantity > 1) {
+                              context.read<CartBloc>().add(
+                                UpdateItemQuantity(item.id, item.quantity - 1),
+                              );
+                            }
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            // Increase quantity
+                            context.read<CartBloc>().add(
+                              UpdateItemQuantity(item.id, item.quantity + 1),
+                            );
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: AppColors.colorError),
+                          onPressed: () {
+                            // Remove item
+                            context.read<CartBloc>().add(RemoveItem(item.id));
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                )),
+                
+                const Divider(height: 32),
+                
+                // Summary
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Subtotal: ', style: TextStyle(fontSize: 16)),
+                          Text(
+                            '\$${cart.subtotal.toStringAsFixed(2)}',
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      if (cart.discount != null) ...[
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            const Text('Descuento: ', style: TextStyle(fontSize: 16)),
+                            Text(
+                              '-\$${cart.discountAmount.toStringAsFixed(2)}',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.colorSuccess,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Total: ', style: TextStyle(fontSize: 20)),
+                          Text(
+                            '\$${cart.total.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.colorAccent,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: AppSpacing.spacing8),
-                Text(
-                  'Cobra en segundos. Sin internet. Sin complicaciones.',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColors.colorOnSurfaceMuted,
+                
+                // Clear cart button
+                ElevatedButton.icon(
+                  onPressed: () {
+                    context.read<CartBloc>().add(ClearCartEvent());
+                  },
+                  icon: const Icon(Icons.delete_sweep),
+                  label: const Text('Vaciar carrito'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.colorError,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ],
-            ),
-          ),
-        ),
+            );
+          }
+          
+          return const Center(child: Text('Presiona + para agregar productos de prueba'));
+        },
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add test product
+          final testProduct = Product(
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
+            name: 'Producto de Prueba',
+            price: 9.99,
+            barcode: '123456789',
+            category: 'Test',
+            stock: 100,
+            createdAt: DateTime.now(),
+          );
+          
+          context.read<CartBloc>().add(AddItemToCart(testProduct, 1));
+          
+          // Show snackbar
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Producto agregado al carrito')),
+          );
+        },
+        icon: const Icon(Icons.add),
+        label: const Text('Agregar Producto'),
       ),
     );
   }
