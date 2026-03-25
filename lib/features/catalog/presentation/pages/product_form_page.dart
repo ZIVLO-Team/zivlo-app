@@ -264,7 +264,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
     }
 
     final dto = ProductDTO(
-      id: _isEditing ? widget.product.id : null,
+      id: _isEditing && widget.product != null ? widget.product.id : null,
       name: _nameController.text.trim(),
       price: double.parse(_priceController.text),
       barcode: _barcodeController.text.trim().isEmpty
