@@ -73,5 +73,5 @@ class CalculateChange {
 
 /// Failure for invalid amount errors
 class InvalidAmountFailure extends Failure {
-  const InvalidAmountFailure(super.message);
+  const InvalidAmountFailure(String message) : super(message: message);
 }

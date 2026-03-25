@@ -26,7 +26,7 @@ final class AppRouter {
 
   static final GoRouter router = GoRouter(
     initialLocation: '/',
-    debugLogDiagnostics: (String message) => false,
+    debugLogDiagnostics: false,
     routes: [
       // Home route
       GoRoute(

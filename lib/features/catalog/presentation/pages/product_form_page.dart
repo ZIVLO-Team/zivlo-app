@@ -24,7 +24,7 @@ import '../widgets/product_form_fields.dart';
 /// - Vuelve atrás al guardar exitosamente
 class ProductFormPage extends StatefulWidget {
   /// Product to edit (null for new product)
-  final dynamic product;
+  final ProductDTO? product;
 
   const ProductFormPage({
     super.key,
@@ -75,11 +75,11 @@ class _ProductFormPageState extends State<ProductFormPage> {
 
   void _populateForm() {
     setState(() {
-      _nameController.text = widget.product.name;
-      _priceController.text = widget.product.price.toStringAsFixed(2);
-      _barcodeController.text = widget.product.barcode ?? '';
-      _categoryController.text = widget.product.category ?? '';
-      _stockController.text = widget.product.stock.toString();
+      _nameController.text = widget.product?.name ?? '';
+      _priceController.text = widget.product?.price.toStringAsFixed(2) ?? '0.00';
+      _barcodeController.text = widget.product?.barcode ?? '';
+      _categoryController.text = widget.product?.category ?? '';
+      _stockController.text = widget.product?.stock.toString() ?? '0';
     });
   }
 
