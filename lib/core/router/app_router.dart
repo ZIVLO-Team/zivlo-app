@@ -7,13 +7,20 @@ import '../../features/home/presentation/pages/home_page.dart';
 // Features - Scanner
 import '../../features/scanner/presentation/pages/scanner_page.dart';
 
+// Features - Checkout
+import '../../features/checkout/presentation/pages/checkout_page.dart';
+import '../../features/checkout/presentation/pages/payment_success_page.dart';
+import '../../features/checkout/domain/value_objects/payment_method.dart';
+
 /// App Router Configuration
-/// 
+///
 /// Uses GoRouter for declarative routing with type-safe navigation
-/// 
+///
 /// Routes:
 /// - `/` - Home page
 /// - `/scanner` - Barcode scanner page
+/// - `/checkout` - Checkout/payment page
+/// - `/checkout/success` - Payment success confirmation
 final class AppRouter {
   AppRouter._();
 
@@ -35,6 +42,32 @@ final class AppRouter {
         pageBuilder: (context, state) => MaterialPage(
           child: ScannerPage(),
         ),
+      ),
+
+      // Checkout route
+      GoRoute(
+        path: '/checkout',
+        name: 'checkout',
+        pageBuilder: (context, state) => const MaterialPage(
+          child: CheckoutPage(),
+        ),
+      ),
+
+      // Payment success route
+      GoRoute(
+        path: '/checkout/success',
+        name: 'checkout-success',
+        pageBuilder: (context, state) {
+          final args = state.extra as Map<String, dynamic>?;
+          return MaterialPage(
+            child: PaymentSuccessPage(
+              saleId: args?['saleId'] as String? ?? '',
+              totalPaid: args?['totalPaid'] as double? ?? 0.0,
+              paymentMethod: args?['paymentMethod'] as PaymentMethod? ?? PaymentMethod.cash,
+              change: args?['change'] as double?,
+            ),
+          );
+        },
       ),
     ],
     errorBuilder: (context, state) => Scaffold(

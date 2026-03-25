@@ -54,6 +54,20 @@ class PrinterPrintFailure extends Failure {
     : super(message: message ?? 'Failed to print receipt', exception: exception);
 }
 
+/// Failure when printer operations fail
+class PrinterOperationFailure extends Failure {
+  final String operation;
+
+  const PrinterOperationFailure({
+    required this.operation,
+    String? message,
+    Exception? exception,
+  }) : super(message: message ?? 'Printer operation failed: $operation', exception: exception);
+
+  @override
+  List<Object?> get props => [operation, message, exception];
+}
+
 /// Failure when scanner fails
 class ScannerFailure extends Failure {
   const ScannerFailure({String? message, Exception? exception})
