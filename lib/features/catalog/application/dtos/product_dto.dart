@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
 
 /// Product DTO (Data Transfer Object)
 /// Used for transferring data between layers
-/// Different from Entity - may contain only subset of fields
 class ProductDTO extends Equatable {
   final String? id;
   final String name;
@@ -10,7 +10,7 @@ class ProductDTO extends Equatable {
   final String? barcode;
   final String? category;
   final int stock;
-  
+
   const ProductDTO({
     this.id,
     required this.name,
@@ -19,7 +19,7 @@ class ProductDTO extends Equatable {
     this.category,
     required this.stock,
   });
-  
+
   /// Converts DTO to Entity
   /// Requires ID and createdAt to be set
   Product toEntity(String id, DateTime createdAt) {
@@ -33,7 +33,7 @@ class ProductDTO extends Equatable {
       createdAt: createdAt,
     );
   }
-  
+
   /// Creates DTO from Entity
   factory ProductDTO.fromEntity(Product product) {
     return ProductDTO(
@@ -45,7 +45,7 @@ class ProductDTO extends Equatable {
       stock: product.stock,
     );
   }
-  
+
   @override
   List<Object?> get props => [id, name, price, barcode, category, stock];
 }

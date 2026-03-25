@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 // Features
-import '../features/catalog/injection_container.dart' as catalog;
+import 'package:zivlo/features/catalog/injection_container.dart' as catalog;
 
 // Hive Models - Catalog
-import '../features/catalog/infrastructure/models/product_hive_model.dart';
+import 'package:zivlo/features/catalog/infrastructure/models/product_hive_model.dart';
 
 /// Global service locator
 final GetIt sl = GetIt.instance;
