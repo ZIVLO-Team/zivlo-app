@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../core/error/failures.dart';
-import '../entities/product.dart';
+import '../../../../core/error/failures.dart';
+import '../../domain/entities/product.dart';
 
 /// Use Case: Get Product by Barcode
 /// Retrieves a product from the repository using its barcode

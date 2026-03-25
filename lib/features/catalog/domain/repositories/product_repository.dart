@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../core/error/failures.dart';
+import '../../../../core/error/failures.dart';
 import '../entities/product.dart';
 
 /// Product Repository Port (Interface)
