@@ -2,10 +2,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:zivlo/core/error/failures.dart';
-import 'package:zivlo/features/catalog/domain/entities/product.dart';
-import 'package:zivlo/features/catalog/domain/repositories/product_repository.dart';
-import 'package:zivlo/features/catalog/infrastructure/models/product_hive_model.dart';
+import 'package:zivlo/lib/core/error/failures.dart';
+import 'package:zivlo/lib/features/catalog/domain/entities/product.dart';
+import 'package:zivlo/lib/features/catalog/domain/repositories/product_repository.dart';
+import 'package:zivlo/lib/features/catalog/infrastructure/models/product_hive_model.dart';
 
 /// Hive implementation of IProductRepository
 /// Handles all local database operations for products
@@ -167,7 +167,27 @@ class HiveProductRepository implements IProductRepository {
   }
 
   @override
-  Future<Either<Failure, List<String>>> getByCategory(String category) async {
+  Future<Either<Failure, List<Product>>> getByCategory(String category) async {
+    try {
+      final products = _box.values
+          .where((model) =>
+              model.category != null &&
+              model.category!.trim().toLowerCase() == category.trim().toLowerCase())
+          .map((model) => model.toEntity())
+          .toList();
+
+      return Right(products);
+    } catch (e) {
+      return Left(CartOperationFailure(
+        'get_products_by_category',
+        message: 'Failed to get products by category',
+        exception: e as Exception,
+      ));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<String>>> getAllCategories() async {
     try {
       final categories = _box.values
           .map((model) => model.category)
@@ -185,10 +205,5 @@ class HiveProductRepository implements IProductRepository {
         exception: e as Exception,
       ));
     }
-  }
-
-  @override
-  Future<Either<Failure, List<String>>> getAllCategories() async {
-    return getByCategory('');
   }
 }

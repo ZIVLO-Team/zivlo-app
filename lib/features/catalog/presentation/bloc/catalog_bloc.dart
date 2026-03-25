@@ -28,10 +28,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   }) : super(CatalogInitial()) {
     on<LoadAllProducts>(_onLoadAllProducts);
     on<LoadProductByBarcode>(_onLoadProductByBarcode);
-    on<CreateProduct>(_onCreateProduct);
-    on<UpdateProduct>(_onUpdateProduct);
-    on<DeleteProduct>(_onDeleteProduct);
-    on<SearchProducts>(_onSearchProducts);
+    on<CreateProductEvent>(_onCreateProduct);
+    on<UpdateProductEvent>(_onUpdateProduct);
+    on<DeleteProductEvent>(_onDeleteProduct);
+    on<SearchProductsEvent>(_onSearchProducts);
     on<ClearSearch>(_onClearSearch);
   }
   

@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:zivlo/lib/features/catalog/application/dtos/product_dto.dart';
 
 /// Catalog Event - Base class
 abstract class CatalogEvent extends Equatable {
   const CatalogEvent();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -17,49 +18,49 @@ class LoadAllProducts extends CatalogEvent {
 /// Event: Load product by barcode
 class LoadProductByBarcode extends CatalogEvent {
   final String barcode;
-  
+
   const LoadProductByBarcode(this.barcode);
-  
+
   @override
   List<Object?> get props => [barcode];
 }
 
 /// Event: Create new product
-class CreateProduct extends CatalogEvent {
+class CreateProductEvent extends CatalogEvent {
   final ProductDTO product;
-  
-  const CreateProduct(this.product);
-  
+
+  const CreateProductEvent(this.product);
+
   @override
   List<Object?> get props => [product];
 }
 
 /// Event: Update existing product
-class UpdateProduct extends CatalogEvent {
+class UpdateProductEvent extends CatalogEvent {
   final ProductDTO product;
-  
-  const UpdateProduct(this.product);
-  
+
+  const UpdateProductEvent(this.product);
+
   @override
   List<Object?> get props => [product];
 }
 
 /// Event: Delete product
-class DeleteProduct extends CatalogEvent {
+class DeleteProductEvent extends CatalogEvent {
   final String productId;
-  
-  const DeleteProduct(this.productId);
-  
+
+  const DeleteProductEvent(this.productId);
+
   @override
   List<Object?> get props => [productId];
 }
 
 /// Event: Search products
-class SearchProducts extends CatalogEvent {
+class SearchProductsEvent extends CatalogEvent {
   final String query;
-  
-  const SearchProducts(this.query);
-  
+
+  const SearchProductsEvent(this.query);
+
   @override
   List<Object?> get props => [query];
 }
