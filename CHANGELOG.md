@@ -8,6 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Nothing yet
+
+### Changed
+- Nothing yet
+
+### Deprecated
+- Nothing yet
+
+### Removed
+- Nothing yet
+
+### Fixed
+- Nothing yet
+
+### Security
+- Nothing yet
+
+---
+
+## [1.1.0] - 2026-03-24
+
+### Added
 - Initial project structure with Clean/Hexagonal Architecture
 - Core layer: error handling, theme, constants
 - Catalog feature: domain entities, value objects, use cases
