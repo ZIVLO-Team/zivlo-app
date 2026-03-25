@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../../domain/value_objects/payment_method.dart';
-import '../widgets/payment_method_selector.dart';
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
+import 'package:zivlo/features/checkout/presentation/widgets/payment_method_selector.dart';
 
 /// Payment Success Page
 /// Displays confirmation after successful payment

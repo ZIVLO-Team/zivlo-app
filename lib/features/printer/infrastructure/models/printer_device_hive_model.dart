@@ -1,6 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../domain/entities/printer_device.dart';
-
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
 /// Printer Device Hive Model
 /// Hive-compatible model for storing printer device information
 /// 

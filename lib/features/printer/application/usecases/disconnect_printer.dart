@@ -1,7 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../../domain/ports/printer_port.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/printer/domain/ports/printer_port.dart';
 /// Use Case: Disconnect Printer
 ///
 /// Disconnects from the currently connected Bluetooth printer

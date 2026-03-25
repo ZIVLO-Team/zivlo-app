@@ -3,26 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 // Domain - Repositories (Ports)
-import '../../domain/repositories/checkout_repository.dart';
-import '../../domain/repositories/cart_repository.dart';
-
+import 'package:zivlo/features/checkout/domain/repositories/checkout_repository.dart';
+import 'package:zivlo/features/checkout/domain/repositories/cart_repository.dart';
 // Infrastructure - Repositories (Implementations)
-import '../../infrastructure/repositories/hive_checkout_repository.dart';
-import '../../infrastructure/repositories/in_memory_cart_repository.dart';
-
+import 'package:zivlo/features/checkout/infrastructure/repositories/hive_checkout_repository.dart';
+import 'package:zivlo/features/checkout/infrastructure/repositories/in_memory_cart_repository.dart';
 // Infrastructure - Hive Models
-import '../../infrastructure/models/sale_hive_model.dart';
-import '../../infrastructure/models/sale_item_hive_model.dart';
-
+import 'package:zivlo/features/checkout/infrastructure/models/sale_hive_model.dart';
+import 'package:zivlo/features/checkout/infrastructure/models/sale_item_hive_model.dart';
 // Application - Use Cases
-import '../../application/usecases/process_payment.dart';
-import '../../application/usecases/calculate_change.dart';
-import '../../application/usecases/validate_payment.dart';
-import '../../application/usecases/get_checkout_summary.dart';
-
+import 'package:zivlo/features/checkout/application/usecases/process_payment.dart';
+import 'package:zivlo/features/checkout/application/usecases/calculate_change.dart';
+import 'package:zivlo/features/checkout/application/usecases/validate_payment.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
 // Presentation - BLoC
-import '../../presentation/bloc/checkout_bloc.dart';
-
+import 'package:zivlo/features/checkout/presentation/bloc/checkout_bloc.dart';
 /// Initialize checkout feature dependencies
 /// Uses the global service locator from lib/injection_container.dart
 void initializeDependencies() {

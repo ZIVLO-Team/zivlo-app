@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../domain/entities/printer_device.dart';
-
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
 /// Printer State - Base class
 /// All printer states extend this class
 abstract class PrinterState extends Equatable {

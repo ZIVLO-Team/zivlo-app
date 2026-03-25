@@ -1,11 +1,11 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/sale.dart';
-import '../../domain/repositories/checkout_repository.dart';
-import '../../domain/value_objects/payment_method.dart';
-import '../models/sale_hive_model.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/checkout/domain/entities/sale.dart';
+import 'package:zivlo/features/checkout/domain/repositories/checkout_repository.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
+import 'package:zivlo/features/checkout/infrastructure/models/sale_hive_model.dart';
 
 /// Hive Implementation of ICheckoutRepository
 /// 

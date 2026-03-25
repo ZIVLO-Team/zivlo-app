@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import '../../../../core/domain/value_objects/barcode_format.dart';
-import '../../../catalog/domain/entities/product.dart';
+import 'package:zivlo/core/domain/value_objects/barcode_format.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
 
 /// Scan Result Entity
 /// Represents the result of a barcode scan operation

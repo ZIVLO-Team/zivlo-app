@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../domain/entities/printer_device.dart';
-import '../bloc/printer_bloc.dart';
-import '../bloc/printer_event.dart';
-import '../bloc/printer_state.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
+import 'package:zivlo/features/printer/presentation/bloc/printer_bloc.dart';
+import 'package:zivlo/features/printer/presentation/bloc/printer_event.dart';
+import 'package:zivlo/features/printer/presentation/bloc/printer_state.dart';
 /// Printer Selector Bottom Sheet
 /// 
 /// A modal bottom sheet that allows users to:

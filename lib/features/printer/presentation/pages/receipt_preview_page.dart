@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../checkout/domain/entities/sale.dart';
-import '../../application/usecases/generate_receipt.dart';
-import '../../domain/entities/receipt.dart';
-import '../bloc/printer_bloc.dart';
-import '../bloc/printer_event.dart';
-import '../bloc/printer_state.dart';
-import '../widgets/receipt_widget.dart';
-import '../widgets/print_button.dart';
-import '../widgets/printer_selector_sheet.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt_item.dart';
+import 'package:zivlo/features/printer/presentation/bloc/printer_bloc.dart';
+import 'package:zivlo/features/printer/presentation/bloc/printer_event.dart';
+import 'package:zivlo/features/printer/presentation/bloc/printer_state.dart';
+import 'package:zivlo/features/printer/presentation/widgets/receipt_widget.dart';
+import 'package:zivlo/features/printer/presentation/widgets/print_button.dart';
+import 'package:zivlo/features/printer/presentation/widgets/printer_selector_sheet.dart';
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/checkout/domain/entities/sale.dart';
+import 'package:zivlo/features/printer/application/usecases/generate_receipt.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt.dart';
 
 /// Receipt Preview Page
 /// 
@@ -176,7 +176,7 @@ class ReceiptPreviewPage extends StatelessWidget {
   /// Builds the page body
   Widget _buildBody(BuildContext context, Receipt receipt) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(AppSpacing.padding16),
+      padding: const EdgeInsets.all(AppSpacing.spacing16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

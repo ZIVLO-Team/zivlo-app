@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/theme/app_theme.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
 /// Home Page
 /// 
 /// Main landing page for the Zivlo POS app

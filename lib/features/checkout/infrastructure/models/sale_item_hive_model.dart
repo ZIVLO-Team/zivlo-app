@@ -1,6 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../domain/entities/sale_item.dart';
-
+import 'package:zivlo/features/checkout/domain/entities/sale_item.dart';
 /// Hive Data Model for SaleItem
 /// This is a DTO for Hive storage, separate from domain entity
 class SaleItemHiveModel {

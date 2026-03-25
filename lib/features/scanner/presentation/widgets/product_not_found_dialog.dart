@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/theme/app_theme.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
 /// Product Not Found Dialog
 /// Displays when a scanned barcode is not in the catalog
 /// Offers options to cancel or create a new product

@@ -1,8 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/ports/scanner_port.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/scanner/domain/ports/scanner_port.dart';
 /// Use Case: Stop Scanning
 /// Stops the barcode scanning process
 ///

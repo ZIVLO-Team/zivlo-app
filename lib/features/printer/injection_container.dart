@@ -2,23 +2,23 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Domain - Port
-import '../../domain/ports/printer_port.dart';
+import 'package:zivlo/features/printer/domain/ports/printer_port.dart';
 
 // Infrastructure - Adapters
-import '../../infrastructure/adapters/bluetooth_printer_adapter.dart';
+import 'package:zivlo/features/printer/infrastructure/adapters/bluetooth_printer_adapter.dart';
 
 // Infrastructure - Repositories
-import '../../infrastructure/repositories/hive_printer_repository.dart';
+import 'package:zivlo/features/printer/infrastructure/repositories/hive_printer_repository.dart';
 
 // Application - Use Cases
-import '../../application/usecases/discover_printers.dart';
-import '../../application/usecases/connect_printer.dart';
-import '../../application/usecases/disconnect_printer.dart';
-import '../../application/usecases/print_receipt.dart';
-import '../../application/usecases/generate_receipt.dart';
+import 'package:zivlo/features/printer/application/usecases/discover_printers.dart';
+import 'package:zivlo/features/printer/application/usecases/connect_printer.dart';
+import 'package:zivlo/features/printer/application/usecases/disconnect_printer.dart';
+import 'package:zivlo/features/printer/application/usecases/print_receipt.dart';
+import 'package:zivlo/features/printer/application/usecases/generate_receipt.dart';
 
 // Presentation - BLoC
-import '../../presentation/bloc/printer_bloc.dart';
+import 'package:zivlo/features/printer/presentation/bloc/printer_bloc.dart';
 
 /// Initialize printer feature dependencies
 /// Uses the global service locator from lib/injection_container.dart

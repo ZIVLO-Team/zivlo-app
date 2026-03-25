@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../entities/product.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
 
 /// Product Repository Port (Interface)
 /// Defines what the domain layer needs from the infrastructure layer

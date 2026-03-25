@@ -4,22 +4,21 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../../catalog/infrastructure/models/product_hive_model.dart';
-import '../../../catalog/infrastructure/repositories/hive_product_repository.dart';
-import '../../domain/ports/scanner_port.dart';
-import '../../infrastructure/adapters/mobile_scanner_adapter.dart';
-import '../../application/usecases/start_scanning.dart';
-import '../../application/usecases/stop_scanning.dart';
-import '../../application/usecases/handle_scan_result.dart';
-import '../../application/usecases/lookup_product_by_barcode.dart';
-import '../bloc/scanner_bloc.dart';
-import '../bloc/scanner_event.dart';
-import '../bloc/scanner_state.dart';
-import '../widgets/scanner_overlay.dart';
-import '../widgets/scan_result_bottom_sheet.dart';
-import '../widgets/product_not_found_dialog.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/catalog/infrastructure/models/product_hive_model.dart';
+import 'package:zivlo/features/catalog/infrastructure/repositories/hive_product_repository.dart';
+import 'package:zivlo/features/scanner/domain/ports/scanner_port.dart';
+import 'package:zivlo/features/scanner/infrastructure/adapters/mobile_scanner_adapter.dart';
+import 'package:zivlo/features/scanner/application/usecases/start_scanning.dart';
+import 'package:zivlo/features/scanner/application/usecases/stop_scanning.dart';
+import 'package:zivlo/features/scanner/application/usecases/handle_scan_result.dart';
+import 'package:zivlo/features/scanner/application/usecases/lookup_product_by_barcode.dart';
+import 'package:zivlo/features/scanner/presentation/bloc/scanner_bloc.dart';
+import 'package:zivlo/features/scanner/presentation/bloc/scanner_event.dart';
+import 'package:zivlo/features/scanner/presentation/bloc/scanner_state.dart';
+import 'package:zivlo/features/scanner/presentation/widgets/scanner_overlay.dart';
+import 'package:zivlo/features/scanner/presentation/widgets/scan_result_bottom_sheet.dart';
+import 'package:zivlo/features/scanner/presentation/widgets/product_not_found_dialog.dart';
 /// Scanner Page
 /// Full-screen barcode scanning page with camera view
 ///

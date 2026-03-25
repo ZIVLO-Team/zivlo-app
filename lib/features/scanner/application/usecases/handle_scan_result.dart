@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/scan_result.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
 import 'lookup_product_by_barcode.dart';
 
 /// Use Case: Handle Scan Result

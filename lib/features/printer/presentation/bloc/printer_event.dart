@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-import '../../domain/entities/printer_device.dart';
-import '../../domain/entities/receipt.dart';
-
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt.dart';
 /// Printer Event - Base class
 /// All printer events extend this class
 abstract class PrinterEvent extends Equatable {

@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/scan_result.dart';
-import '../../domain/ports/scanner_port.dart';
-import '../../application/usecases/start_scanning.dart';
-import '../../application/usecases/stop_scanning.dart';
-import '../../application/usecases/handle_scan_result.dart';
-import '../../application/usecases/lookup_product_by_barcode.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
+import 'package:zivlo/features/scanner/domain/ports/scanner_port.dart';
+import 'package:zivlo/features/scanner/application/usecases/start_scanning.dart';
+import 'package:zivlo/features/scanner/application/usecases/stop_scanning.dart';
+import 'package:zivlo/features/scanner/application/usecases/handle_scan_result.dart';
+import 'package:zivlo/features/scanner/application/usecases/lookup_product_by_barcode.dart';
 import 'scanner_event.dart';
 import 'scanner_state.dart';
 

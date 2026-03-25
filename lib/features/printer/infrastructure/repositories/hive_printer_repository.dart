@@ -1,11 +1,11 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/printer_device.dart';
-import '../models/printer_device_hive_model.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
+import 'package:zivlo/features/printer/infrastructure/models/printer_device_hive_model.dart';
 
 /// Hive Printer Repository
 /// Stores printer settings and preferences in Hive
-/// 
+///
 /// This repository handles:
 /// - Default printer storage
 /// - Recently connected printers list
@@ -15,7 +15,7 @@ class HivePrinterRepository {
   static const String _defaultPrinterKey = 'default_printer';
   static const String _recentPrintersKey = 'recent_printers';
 
-  Box<PrinterDeviceHiveModel>? _box;
+  Box<dynamic>? _box;
 
   /// Initializes the Hive box
   Future<void> initialize() async {

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../domain/value_objects/payment_method.dart';
-
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 /// Checkout Event - Base class
 /// All checkout events extend this class
 abstract class CheckoutEvent extends Equatable {

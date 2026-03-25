@@ -1,10 +1,9 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/domain/value_objects/barcode_format.dart';
-import '../../../../core/error/failures.dart';
-import '../../../catalog/domain/repositories/product_repository.dart';
-import '../../domain/entities/scan_result.dart';
-
+import 'package:zivlo/core/domain/value_objects/barcode_format.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/catalog/domain/repositories/product_repository.dart';
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
 /// Use Case: Lookup Product by Barcode
 /// Looks up a product in the catalog by its barcode
 /// and returns a ScanResult entity

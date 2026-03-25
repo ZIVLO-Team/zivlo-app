@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_theme.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
 /// Product Search Bar Widget
 ///
 /// Search bar for filtering products by name or barcode

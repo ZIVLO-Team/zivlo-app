@@ -1,10 +1,9 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/receipt.dart';
-import '../../domain/entities/receipt_item.dart';
-import '../../../checkout/domain/entities/sale.dart';
-import '../../../settings/domain/entities/business_info.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt_item.dart';
+import 'package:zivlo/features/checkout/domain/entities/sale.dart';
+import 'package:zivlo/features/settings/domain/entities/business_info.dart';
 /// Use Case: Generate Receipt
 ///
 /// Generates a Receipt entity from a Sale and business information

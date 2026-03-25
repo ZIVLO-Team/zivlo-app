@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../domain/entities/sale.dart';
-import '../../domain/value_objects/payment_method.dart';
+import 'package:zivlo/features/checkout/domain/entities/sale.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 import 'sale_item_hive_model.dart';
 
 /// Hive Data Model for Sale

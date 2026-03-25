@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../injection_container.dart' as catalog_di;
-import '../bloc/catalog_bloc.dart';
-import '../bloc/catalog_event.dart';
-import '../bloc/catalog_state.dart';
-import '../widgets/product_card.dart';
-import '../widgets/product_search_bar.dart';
-import '../widgets/category_filter_chip.dart';
-import '../widgets/empty_catalog_widget.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/catalog/injection_container.dart' as catalog_di;
+import 'package:zivlo/features/catalog/presentation/bloc/catalog_bloc.dart';
+import 'package:zivlo/features/catalog/presentation/bloc/catalog_event.dart';
+import 'package:zivlo/features/catalog/presentation/bloc/catalog_state.dart';
+import 'package:zivlo/features/catalog/presentation/widgets/product_card.dart';
+import 'package:zivlo/features/catalog/presentation/widgets/product_search_bar.dart';
+import 'package:zivlo/features/catalog/presentation/widgets/category_filter_chip.dart';
+import 'package:zivlo/features/catalog/presentation/widgets/empty_catalog_widget.dart';
 /// Catalog Page
 ///
 /// Main catalog listing page displaying all products in a grid

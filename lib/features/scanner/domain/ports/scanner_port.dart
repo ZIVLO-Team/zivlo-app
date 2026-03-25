@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../entities/scan_result.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
 
 /// Scanner Port (Interface)
 /// Defines what the domain layer needs from the infrastructure layer

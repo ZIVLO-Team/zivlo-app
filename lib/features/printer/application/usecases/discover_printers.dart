@@ -1,8 +1,7 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/printer_device.dart';
-import '../../domain/ports/printer_port.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
+import 'package:zivlo/features/printer/domain/ports/printer_port.dart';
 /// Use Case: Discover Printers
 ///
 /// Scans for available Bluetooth thermal printers

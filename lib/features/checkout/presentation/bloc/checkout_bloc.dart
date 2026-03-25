@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/value_objects/payment.dart';
-import '../../domain/value_objects/payment_method.dart';
-import '../../application/usecases/process_payment.dart';
-import '../../application/usecases/calculate_change.dart';
-import '../../application/usecases/validate_payment.dart';
-import '../../application/usecases/get_checkout_summary.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
+import 'package:zivlo/features/checkout/application/usecases/process_payment.dart';
+import 'package:zivlo/features/checkout/application/usecases/calculate_change.dart';
+import 'package:zivlo/features/checkout/application/usecases/validate_payment.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
 import 'checkout_event.dart';
 import 'checkout_state.dart';
 

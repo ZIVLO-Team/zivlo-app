@@ -2,11 +2,10 @@ import 'package:fpdart/fpdart.dart';
 import 'package:mobile_scanner/mobile_scanner.dart' as ms;
 import 'dart:async';
 
-import '../../../../core/error/failures.dart';
-import '../../../../core/domain/value_objects/barcode_format.dart';
-import '../../domain/entities/scan_result.dart';
-import '../../domain/ports/scanner_port.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/core/domain/value_objects/barcode_format.dart';
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
+import 'package:zivlo/features/scanner/domain/ports/scanner_port.dart';
 /// Mobile Scanner Adapter
 /// Implementation of IScannerPort using the mobile_scanner package v5.1.1
 /// Handles camera operations, barcode detection, and flash control

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../core/theme/app_theme.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
 /// Product Form Fields
 ///
 /// Reusable form field widgets for the product form page

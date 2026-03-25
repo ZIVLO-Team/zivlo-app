@@ -3,14 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../application/dtos/product_dto.dart';
-import '../../injection_container.dart' as catalog_di;
-import '../bloc/catalog_bloc.dart';
-import '../bloc/catalog_event.dart';
-import '../bloc/catalog_state.dart';
-import '../widgets/product_form_fields.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/catalog/application/dtos/product_dto.dart';
+import 'package:zivlo/features/catalog/injection_container.dart' as catalog_di;
+import 'package:zivlo/features/catalog/presentation/bloc/catalog_bloc.dart';
+import 'package:zivlo/features/catalog/presentation/bloc/catalog_event.dart';
+import 'package:zivlo/features/catalog/presentation/bloc/catalog_state.dart';
+import 'package:zivlo/features/catalog/presentation/widgets/product_form_fields.dart';
 /// Product Form Page
 ///
 /// Create or Edit product form page

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../application/usecases/get_checkout_summary.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
 /// Checkout Summary Widget
 /// Displays the order summary including items, subtotal, discount, and total
 class CheckoutSummary extends StatelessWidget {

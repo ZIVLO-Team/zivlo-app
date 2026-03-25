@@ -1,7 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-
+import 'package:zivlo/core/error/failures.dart';
 /// Use Case: Calculate Change
 /// 
 /// Calculates the change to return to the customer for cash payments

@@ -1,9 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/repositories/cart_repository.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/checkout/domain/repositories/cart_repository.dart';
 /// Checkout Summary DTO
 /// Contains all the information needed to display checkout summary
 class CheckoutSummary extends Equatable {

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../domain/entities/scan_result.dart';
-
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
 /// Scanner Event - Base class
 /// All scanner events extend this class
 abstract class ScannerEvent extends Equatable {

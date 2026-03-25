@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../domain/entities/scan_result.dart';
-import '../bloc/scanner_bloc.dart';
-import '../bloc/scanner_event.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
+import 'package:zivlo/features/scanner/presentation/bloc/scanner_bloc.dart';
+import 'package:zivlo/features/scanner/presentation/bloc/scanner_event.dart';
 /// Scan Result Bottom Sheet
 /// Displays product information when a product is found
 /// Allows quantity adjustment and adding to cart

@@ -1,8 +1,7 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../entities/printer_device.dart';
-import '../entities/receipt.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt.dart';
 /// Printer Port (Interface)
 /// Defines what the domain layer needs from the infrastructure layer
 /// Implementation is done in infrastructure layer (e.g., BluetoothPrinterAdapter)

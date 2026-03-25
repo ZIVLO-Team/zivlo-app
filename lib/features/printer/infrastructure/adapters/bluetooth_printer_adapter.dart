@@ -2,11 +2,10 @@ import 'package:fpdart/fpdart.dart';
 import 'dart:async';
 import 'dart:math';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/printer_device.dart';
-import '../../domain/entities/receipt.dart';
-import '../../domain/ports/printer_port.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt.dart';
+import 'package:zivlo/features/printer/domain/ports/printer_port.dart';
 /// Mock Bluetooth Printer Adapter
 /// 
 /// MOCK IMPLEMENTATION - For development and testing
@@ -84,7 +83,7 @@ class MockBluetoothPrinterAdapter implements IPrinterPort {
 
       // Simulate connection failure (20% chance)
       if (_random.nextDouble() < 0.2) {
-        return Left(const PrinterConnectionFailure(
+        return Left(PrinterConnectionFailure(
           deviceAddress: address,
           message: 'Failed to connect - device unavailable',
         ));

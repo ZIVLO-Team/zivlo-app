@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../../domain/value_objects/payment_method.dart';
-import '../../application/usecases/get_checkout_summary.dart';
-
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
 /// Checkout State - Base class
 /// All checkout states extend this class
 abstract class CheckoutState extends Equatable {

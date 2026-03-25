@@ -1,7 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../../../core/domain/value_objects/barcode_format.dart';
-import '../../domain/entities/scan_result.dart';
-
+import 'package:zivlo/core/domain/value_objects/barcode_format.dart';
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
 /// Hive Data Model for ScanResult
 /// This is a DTO for Hive storage, separate from domain entity
 /// 

@@ -25,7 +25,6 @@ linter:
     # Null safety
     unnecessary_null_checks: true
     use_if_null_to_convert_nulls_to_bools: true
-    use_null_aware_operators: true
     
     # Funcional
     prefer_final_locals: true

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../domain/entities/scan_result.dart';
-
+import 'package:zivlo/features/scanner/domain/entities/scan_result.dart';
 /// Scanner State - Base class
 /// All scanner states extend this class
 abstract class ScannerState extends Equatable {

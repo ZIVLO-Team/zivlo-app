@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../domain/entities/product.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
 /// Product Card Widget
 ///
 /// Square card for grid display of products

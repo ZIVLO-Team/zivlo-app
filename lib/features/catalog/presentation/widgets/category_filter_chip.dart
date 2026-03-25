@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_theme.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
 /// Category Filter Chip Widget
 ///
 /// Filter chip for category selection

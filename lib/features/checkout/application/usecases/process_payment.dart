@@ -1,14 +1,13 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/sale.dart';
-import '../../domain/entities/sale_item.dart';
-import '../../domain/repositories/checkout_repository.dart';
-import '../../domain/repositories/cart_repository.dart';
-import '../../domain/value_objects/payment.dart';
-import '../../domain/value_objects/payment_method.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/checkout/domain/entities/sale.dart';
+import 'package:zivlo/features/checkout/domain/entities/sale_item.dart';
+import 'package:zivlo/features/checkout/domain/repositories/checkout_repository.dart';
+import 'package:zivlo/features/checkout/domain/repositories/cart_repository.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 /// Use Case: Process Payment
 /// 
 /// Handles the complete payment process:

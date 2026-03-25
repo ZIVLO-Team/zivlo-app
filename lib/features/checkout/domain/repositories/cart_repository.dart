@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../../../catalog/domain/entities/product.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
 
 /// Cart Item Entity
 /// Represents an item in the shopping cart

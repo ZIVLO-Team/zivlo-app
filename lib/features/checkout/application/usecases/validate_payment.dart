@@ -1,8 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/value_objects/payment_method.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 /// Use Case: Validate Payment
 /// 
 /// Validates payment data before processing

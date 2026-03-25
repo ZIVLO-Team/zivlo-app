@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/error/failures.dart';
-import '../entities/sale.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/checkout/domain/entities/sale.dart';
 
 /// Checkout Repository Port (Interface)
 /// Defines what the domain layer needs from the infrastructure layer

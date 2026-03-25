@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../domain/entities/printer_device.dart';
-import '../../domain/ports/printer_port.dart';
-import '../../application/usecases/discover_printers.dart';
-import '../../application/usecases/connect_printer.dart';
-import '../../application/usecases/disconnect_printer.dart';
-import '../../application/usecases/print_receipt.dart';
-import '../../infrastructure/repositories/hive_printer_repository.dart';
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/printer/domain/entities/printer_device.dart';
+import 'package:zivlo/features/printer/domain/ports/printer_port.dart';
+import 'package:zivlo/features/printer/application/usecases/discover_printers.dart';
+import 'package:zivlo/features/printer/application/usecases/connect_printer.dart';
+import 'package:zivlo/features/printer/application/usecases/disconnect_printer.dart';
+import 'package:zivlo/features/printer/application/usecases/print_receipt.dart';
+import 'package:zivlo/features/printer/infrastructure/repositories/hive_printer_repository.dart';
 import 'printer_event.dart';
 import 'printer_state.dart';
 
@@ -183,7 +183,7 @@ class PrinterBloc extends Bloc<PrinterEvent, PrinterState> {
         emit(PrinterErrorState(failure.message));
         add(PrinterError(failure.message));
       },
-      (_) {
+      (_) async {
         // Update repository
         if (_selectedPrinterAddress != null) {
           await printerRepository.updatePrinterConnectionStatus(

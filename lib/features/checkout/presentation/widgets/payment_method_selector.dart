@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../domain/value_objects/payment_method.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 /// Payment Method Selector Widget
 /// Displays tabs for selecting payment method (Cash/Card/Mixed)
 class PaymentMethodSelector extends StatelessWidget {

@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 // Features - Home
-import '../../features/home/presentation/pages/home_page.dart';
-
+import 'package:zivlo/features/home/presentation/pages/home_page.dart';
 // Features - Scanner
-import '../../features/scanner/presentation/pages/scanner_page.dart';
-
+import 'package:zivlo/features/scanner/presentation/pages/scanner_page.dart';
 // Features - Checkout
-import '../../features/checkout/presentation/pages/checkout_page.dart';
-import '../../features/checkout/presentation/pages/payment_success_page.dart';
-import '../../features/checkout/domain/value_objects/payment_method.dart';
-
+import 'package:zivlo/features/checkout/presentation/pages/checkout_page.dart';
+import 'package:zivlo/features/checkout/presentation/pages/payment_success_page.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 /// App Router Configuration
 ///
 /// Uses GoRouter for declarative routing with type-safe navigation

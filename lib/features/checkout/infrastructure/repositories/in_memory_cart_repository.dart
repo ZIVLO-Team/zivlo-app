@@ -1,10 +1,9 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../../catalog/domain/entities/product.dart';
-import '../../domain/repositories/cart_repository.dart';
-
+import 'package:zivlo/core/error/failures.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
+import 'package:zivlo/features/checkout/domain/repositories/cart_repository.dart';
 /// In-Memory Implementation of ICartRepository
 /// 
 /// Stores cart items in memory for fast access

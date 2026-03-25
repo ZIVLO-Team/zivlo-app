@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../domain/value_objects/payment_method.dart';
-
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
 /// Payment Data Transfer Object
 /// Used for transferring payment data between layers
 /// 

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../application/usecases/get_checkout_summary.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
 /// Mixed Payment Section Widget
 /// Displays combined cash + card payment UI
 class MixedPaymentSection extends StatelessWidget {

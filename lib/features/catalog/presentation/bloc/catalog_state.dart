@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../domain/entities/product.dart';
-
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
 /// Catalog State - Base class
 abstract class CatalogState extends Equatable {
   const CatalogState();

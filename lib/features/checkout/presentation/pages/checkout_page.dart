@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/theme/app_theme.dart';
-import '../../domain/value_objects/payment_method.dart';
-import '../../application/usecases/get_checkout_summary.dart';
-import '../bloc/checkout_bloc.dart';
-import '../bloc/checkout_event.dart';
-import '../bloc/checkout_state.dart';
-import '../widgets/payment_method_selector.dart';
-import '../widgets/cash_payment_section.dart';
-import '../widgets/card_payment_section.dart';
-import '../widgets/mixed_payment_section.dart';
-import '../widgets/checkout_summary_widget.dart';
-
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/checkout/domain/value_objects/payment_method.dart';
+import 'package:zivlo/features/checkout/application/usecases/get_checkout_summary.dart';
+import 'package:zivlo/features/checkout/presentation/bloc/checkout_bloc.dart';
+import 'package:zivlo/features/checkout/presentation/bloc/checkout_event.dart';
+import 'package:zivlo/features/checkout/presentation/bloc/checkout_state.dart';
+import 'package:zivlo/features/checkout/presentation/widgets/payment_method_selector.dart';
+import 'package:zivlo/features/checkout/presentation/widgets/cash_payment_section.dart';
+import 'package:zivlo/features/checkout/presentation/widgets/card_payment_section.dart';
+import 'package:zivlo/features/checkout/presentation/widgets/mixed_payment_section.dart';
+import 'package:zivlo/features/checkout/presentation/widgets/checkout_summary_widget.dart';
 /// Checkout Page
 /// Main payment selection and processing page
 /// 
