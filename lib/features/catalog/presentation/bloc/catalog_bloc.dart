@@ -126,15 +126,19 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     // Get existing product to preserve createdAt
     final existingResult = await getAllProducts.execute();
 
-    Product? existingProduct;
+    // Use late variable to avoid nullable warnings
+    late Product existingProduct;
+    var found = false;
+
     existingResult.fold(
       (failure) {
         emit(CatalogError(failure.message));
       },
       (products) {
-        final found = products.where((p) => p.id == event.product.id).firstOrNull;
-        if (found != null) {
-          existingProduct = found;
+        final product = products.where((p) => p.id == event.product.id).firstOrNull;
+        if (product != null) {
+          existingProduct = product;
+          found = true;
         } else {
           emit(CatalogError('Product not found'));
         }
@@ -142,7 +146,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     );
 
     // Validate existing product was found
-    if (existingProduct == null) {
+    if (!found) {
       return; // Error already emitted above
     }
 
