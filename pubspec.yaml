@@ -45,11 +45,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # Generación de código Hive - versión compatible
-  build_runner: ^2.4.6
-  hive_generator: ^1.1.3
-
-  # Testing - compatible con hive_generator 1.1.x
+  # Testing - sin conflictos con Hive
   bloc_test: ^9.1.5
   mocktail: ^1.0.2
 

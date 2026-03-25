@@ -29,28 +29,20 @@ Future<void> initializeDependencies() async {
   cart.initializeDependencies();
 }
 
-/// Initialize Hive boxes
+/// Initialize Hive boxes and register adapters manually
+/// Note: We don't use hive_generator/build_runner to avoid dependency conflicts
 Future<void> _initializeHive() async {
   await Hive.initFlutter();
   
-  // Register adapters - Catalog
-  if (!Hive.isAdapterRegistered(0)) {
-    Hive.registerAdapter(ProductHiveModelAdapter());
-  }
+  // Register adapters manually (without hive_generator)
+  // Catalog
+  Hive.registerAdapter(ProductHiveModelAdapter());
   
-  // Register adapters - Cart
-  if (!Hive.isAdapterRegistered(1)) {
-    Hive.registerAdapter(CartHiveModelAdapter());
-  }
-  if (!Hive.isAdapterRegistered(2)) {
-    Hive.registerAdapter(CartItemHiveModelAdapter());
-  }
-  if (!Hive.isAdapterRegistered(3)) {
-    Hive.registerAdapter(DiscountHiveModelAdapter());
-  }
-  if (!Hive.isAdapterRegistered(4)) {
-    Hive.registerAdapter(ProductSnapshotHiveModelAdapter());
-  }
+  // Cart
+  Hive.registerAdapter(CartHiveModelAdapter());
+  Hive.registerAdapter(CartItemHiveModelAdapter());
+  Hive.registerAdapter(DiscountHiveModelAdapter());
+  Hive.registerAdapter(ProductSnapshotHiveModelAdapter());
   
   // Open boxes
   await Hive.openBox<ProductHiveModel>('products');
