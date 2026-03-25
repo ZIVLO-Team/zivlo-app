@@ -137,7 +137,4 @@ class ProcessPayment {
   }
 }
 
-/// Failure for payment validation errors
-class PaymentValidationFailure extends Failure {
-  const PaymentValidationFailure(super.message);
-}
+// Payment already processed or cart is empty
