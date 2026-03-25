@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/product.dart';
-import '../../domain/repositories/product_repository.dart';
-import '../../application/usecases/product_usecases.dart';
+import 'package:zivlo/features/catalog/domain/entities/product.dart';
+import 'package:zivlo/features/catalog/domain/repositories/product_repository.dart';
+import 'package:zivlo/features/catalog/application/usecases/product_usecases.dart';
+import 'package:zivlo/features/catalog/application/dtos/product_dto.dart';
 import 'catalog_event.dart';
 import 'catalog_state.dart';
 
@@ -17,7 +17,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final UpdateProduct updateProduct;
   final DeleteProduct deleteProduct;
   final SearchProducts searchProducts;
-  
+
   CatalogBloc({
     required this.getAllProducts,
     required this.getProductByBarcode,
@@ -34,16 +34,16 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     on<SearchProductsEvent>(_onSearchProducts);
     on<ClearSearch>(_onClearSearch);
   }
-  
+
   /// Handler: Load all products
   Future<void> _onLoadAllProducts(
     LoadAllProducts event,
     Emitter<CatalogState> emit,
   ) async {
     emit(CatalogLoading());
-    
+
     final result = await getAllProducts.execute();
-    
+
     result.fold(
       (failure) => emit(CatalogError(failure.message)),
       (products) {
@@ -56,16 +56,16 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       },
     );
   }
-  
+
   /// Handler: Load product by barcode
   Future<void> _onLoadProductByBarcode(
     LoadProductByBarcode event,
     Emitter<CatalogState> emit,
   ) async {
     emit(CatalogLoading());
-    
+
     final result = await getProductByBarcode.execute(event.barcode);
-    
+
     result.fold(
       (failure) => emit(CatalogError(failure.message)),
       (product) {
@@ -84,21 +84,21 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       },
     );
   }
-  
+
   /// Handler: Create product
   Future<void> _onCreateProduct(
-    CreateProduct event,
+    CreateProductEvent event,
     Emitter<CatalogState> emit,
   ) async {
     emit(CatalogLoading());
-    
+
     final product = event.product.toEntity(
       _generateId(),
       DateTime.now(),
     );
-    
+
     final result = await createProduct.execute(product);
-    
+
     result.fold(
       (failure) => emit(CatalogError(failure.message)),
       (createdProduct) {
@@ -112,21 +112,20 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             categories: categories,
           ));
         }
-        emit(ProductCreatedSuccess(createdProduct));
       },
     );
   }
-  
+
   /// Handler: Update product
   Future<void> _onUpdateProduct(
-    UpdateProduct event,
+    UpdateProductEvent event,
     Emitter<CatalogState> emit,
   ) async {
     emit(CatalogLoading());
-    
+
     // Get existing product to preserve createdAt
     final existingResult = await getAllProducts.execute();
-    
+
     Product? existingProduct;
     existingResult.fold(
       (_) => null,
@@ -143,19 +142,19 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         );
       },
     );
-    
-    if (existingProduct == null || existingProduct!.id.isEmpty) {
+
+    if (existingProduct == null || existingProduct.id.isEmpty) {
       emit(CatalogError('Product not found'));
       return;
     }
-    
+
     final product = event.product.toEntity(
-      existingProduct!.id,
+      existingProduct.id,
       existingProduct.createdAt,
     );
-    
+
     final result = await updateProduct.execute(product);
-    
+
     result.fold(
       (failure) => emit(CatalogError(failure.message)),
       (updatedProduct) {
@@ -171,18 +170,17 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             categories: categories,
           ));
         }
-        emit(ProductUpdatedSuccess(updatedProduct));
       },
     );
   }
-  
+
   /// Handler: Delete product
   Future<void> _onDeleteProduct(
-    DeleteProduct event,
+    DeleteProductEvent event,
     Emitter<CatalogState> emit,
   ) async {
     final result = await deleteProduct.execute(event.productId);
-    
+
     result.fold(
       (failure) => emit(CatalogError(failure.message)),
       (_) {
@@ -198,26 +196,25 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             categories: categories,
           ));
         }
-        emit(ProductDeletedSuccess(event.productId));
       },
     );
   }
-  
+
   /// Handler: Search products
   Future<void> _onSearchProducts(
-    SearchProducts event,
+    SearchProductsEvent event,
     Emitter<CatalogState> emit,
   ) async {
     final currentState = state;
     if (currentState is! CatalogLoaded) return;
-    
+
     if (event.query.trim().isEmpty) {
       emit(currentState.copyWith(filteredProducts: currentState.products));
       return;
     }
-    
+
     final result = await searchProducts.execute(event.query);
-    
+
     result.fold(
       (failure) => emit(CatalogError(failure.message)),
       (products) {
@@ -225,7 +222,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       },
     );
   }
-  
+
   /// Handler: Clear search
   Future<void> _onClearSearch(
     ClearSearch event,
@@ -233,10 +230,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     final currentState = state;
     if (currentState is! CatalogLoaded) return;
-    
+
     emit(currentState.copyWith(filteredProducts: currentState.products));
   }
-  
+
   /// Helper: Extract unique categories from products
   List<String> _extractCategories(List<Product> products) {
     return products
@@ -247,7 +244,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         .toList()
       ..sort();
   }
-  
+
   /// Helper: Generate unique ID
   String _generateId() {
     return DateTime.now().millisecondsSinceEpoch.toString();
