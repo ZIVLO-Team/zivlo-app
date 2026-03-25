@@ -1,114 +1,119 @@
 # Changelog
 
-All notable changes to Zivlo will be documented in this file.
+Todos los cambios notables en este proyecto se documentan en este archivo.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/),
+y este proyecto se adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.0] - 2024-03-25
 
 ### Added
-- Nothing yet
+- **CI/CD Profesional**: Separación de workflows CI y Release
+- **Release Automation**: APK naming con versión, checksums SHA256, changelog automático
+- **Download Links**: Tabla de descargas en README con links directos a APKs por arquitectura
+- **Documentation**: Guía completa de releases en `docs/RELEASES.md`
+- **Release Template**: Plantilla para release notes en `.github/RELEASE_TEMPLATE.md`
 
 ### Changed
-- Nothing yet
-
-### Deprecated
-- Nothing yet
-
-### Removed
-- Nothing yet
+- **CI Workflow**: Ahora solo validación (analyze + test) en ~8 minutos
+- **Release Workflow**: Build completo + release en GitHub en ~20 minutos
+- **README**: Badges de CI/CD, release y downloads
 
 ### Fixed
-- Nothing yet
+- **Scanner**: MobileScannerAdapter API para mobile_scanner v5.1.1
+- **Printer**: AppSpacing naming (padding → spacing)
+- **ReceiptWidget**: Type inference con ReceiptItem
+- **Icons**: barcode_scanner → qr_code_scanner (icono no existía)
+- **Router**: debugLogDiagnostics tipo bool (no función)
+- **ProductForm**: Type safety con ProductDTO? en lugar de dynamic
+- **Checkout**: Failure constructor con named parameters
+- **Duplicate Class**: PaymentValidationFailure definida una sola vez
 
-### Security
-- Nothing yet
-
----
-
-## [1.1.0] - 2026-03-24
+## [1.1.0] - 2024-03-24
 
 ### Added
-- Initial project structure with Clean/Hexagonal Architecture
-- Core layer: error handling, theme, constants
-- Catalog feature: domain entities, value objects, use cases
-- BLoC pattern implementation for state management
-- GitHub Actions workflows for CI/CD
-- Design system with colors, typography, and spacing
-- Documentation: PRD, Stack, Design, Styles, Brand, Context, AppFlow
+- **Feature Scanner**: Completa con 5 capas (Domain, Application, Infrastructure, Presentation, DI)
+  - Escaneo de códigos de barras con mobile_scanner v5.1.1
+  - BLoC con 7 events y 7 states
+  - ScannerPage con overlay y animación
+  - ProductNotFoundDialog con opción de crear producto
+  - 28 archivos, ~3,500 líneas
+
+- **Feature Catalog**: UI completa
+  - CatalogPage con grid de productos
+  - ProductFormPage para crear/editar
+  - Widgets: ProductCard, SearchBar, FilterChip, EmptyState
+  - 7 archivos UI
+
+- **Feature Checkout**: Completa con 5 capas
+  - 3 métodos de pago: Efectivo, Tarjeta, Mixto
+  - Calculadora de cambio en tiempo real
+  - CheckoutBLoC con 11 events, 8 states
+  - CheckoutPage y PaymentSuccessPage
+  - 30 archivos, ~4,500 líneas
+
+- **Feature Printer**: Completa con 5 capas
+  - MockBluetoothPrinterAdapter (listo para bluetooth_print)
+  - ReceiptWidget con formato ESC/POS 58mm
+  - PrinterBLoC con 8 events, 7 states
+  - ReceiptPreviewPage y PrinterSelectorSheet
+  - 22 archivos, ~3,000 líneas
 
 ### Changed
-- Nothing yet
-
-### Deprecated
-- Nothing yet
-
-### Removed
-- Nothing yet
+- **Barcode VO**: Movido a core/domain/value_objects para compartir entre scanner y catalog
+- **Architecture**: Clean/Hexagonal Architecture en todas las features
+- **State Management**: BLoC pattern consistente
+- **Error Handling**: fpdart Either<Failure, T> en todos los use cases
 
 ### Fixed
-- Nothing yet
+- **Build Errors**: Todos los errores de flutter analyze resueltos
+- **Import Paths**: Relative → absolute imports
+- **Type Safety**: dynamic → tipos específicos con null safety
 
-### Security
-- Nothing yet
-
----
-
-## [1.0.0] - 2024-01-XX
+## [1.0.0] - 2024-01-01
 
 ### Added
-- Initial release
-- Offline-first POS system for Android
-- Barcode scanning with mobile_scanner
-- Shopping cart with discount support
-- Multiple payment methods (cash, card, mixed)
-- Bluetooth thermal printer support
-- Sales history with daily summary
-- Product catalog management
-- Business configuration
-- Dark mode UI optimized for retail environments
-- Space Mono font for numbers and prices
-- DM Sans font for UI text
-- fpdart for functional error handling
-- Hive for local database storage
-- GoRouter for navigation
-- GetIt for dependency injection
-
-### Technical
-- Clean/Hexagonal Architecture
-- BLoC pattern for state management
-- TDD-ready structure
-- GitHub Actions for automated builds
-- Automated release process
-- Comprehensive documentation
+- Proyecto inicial
+- Documentación base (PRD, Stack, Design, Styles, Brand, Context, AppFlow)
+- Estructura Clean Architecture
+- Cart feature completa
+- Configuración de CI/CD básica
 
 ---
 
-## Version Naming
+## Notas
 
-Zivlo uses semantic versioning:
-- **MAJOR** version for incompatible changes
-- **MINOR** version for backwards-compatible features
-- **PATCH** version for backwards-compatible bug fixes
+### Versiones
 
-**Format**: `MAJOR.MINOR.PATCH` (e.g., `1.0.0`)
+- **MAJOR** (1.x.x): Cambios incompatibles
+- **MINOR** (x.1.x): Features nuevas (backward compatible)
+- **PATCH** (x.x.1): Bug fixes (backward compatible)
+
+### Convención de Commits
+
+- `feat:` - Features nuevas
+- `fix:` - Bug fixes
+- `docs:` - Documentación
+- `style:` - Formato/código estético
+- `refactor:` - Refactorización
+- `test:` - Tests
+- `chore:` - Tareas de mantenimiento
+
+### Releases
+
+Los releases se crean automáticamente al hacer push de tags:
+
+```bash
+git tag -a v1.2.0 -m "feat: checkout feature complete"
+git push origin --tags
+```
+
+GitHub Actions genera:
+- APKs con naming: `zivlo-v1.2.0-{arch}.apk`
+- App Bundle: `zivlo-v1.2.0.aab`
+- Checksums: `checksums-v1.2.0.txt`
+- Release notes con changelog automático
 
 ---
 
-## Release Checklist
-
-Before each release, ensure:
-- [ ] All tests pass
-- [ ] Code is properly documented
-- [ ] CHANGELOG is updated
-- [ ] Version number is updated in pubspec.yaml
-- [ ] Git tag is created (vX.X.X)
-- [ ] GitHub Release is published with APK
-- [ ] Documentation is up to date
-
----
-
-## Contact
-
-For questions or feedback about releases, please open an issue on GitHub.
+**Full Changelog**: https://github.com/mowgliph/zivlo/releases
