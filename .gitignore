@@ -6,6 +6,9 @@ build/
 pubspec.lock
 pubspec_overrides.yaml
 
+# Test por defecto de Flutter
+test/widget_test.dart
+
 # IDE
 .idea/
 .vscode/
