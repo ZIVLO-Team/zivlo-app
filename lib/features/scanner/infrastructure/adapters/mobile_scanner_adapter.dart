@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart' as ms;
 import 'dart:async';
 
 import '../../../../core/error/failures.dart';
@@ -8,32 +8,33 @@ import '../../domain/entities/scan_result.dart';
 import '../../domain/ports/scanner_port.dart';
 
 /// Mobile Scanner Adapter
-/// Implementation of IScannerPort using the mobile_scanner package
+/// Implementation of IScannerPort using the mobile_scanner package v5.1.1
 /// Handles camera operations, barcode detection, and flash control
 class MobileScannerAdapter implements IScannerPort {
-  final MobileScannerController _controller;
+  final ms.MobileScannerController _controller;
   final _scanResultsController =
       StreamController<Either<Failure, ScanResult>>.broadcast();
 
   /// Creates a new MobileScannerAdapter
-  /// 
+  ///
   /// Optionally accepts a [controller] for testing purposes.
   /// If not provided, a default MobileScannerController is created.
-  MobileScannerAdapter({MobileScannerController? controller})
-      : _controller = controller ?? MobileScannerController();
+  MobileScannerAdapter({ms.MobileScannerController? controller})
+      : _controller = controller ?? ms.MobileScannerController();
 
   @override
   Either<Failure, Unit> startScanning() {
     try {
-      // Start the camera
+      // Start the camera with barcode callback
       _controller.start();
 
-      // Listen to barcode events
-      _controller.events.listen((event) {
-        if (event.barcodes.isNotEmpty) {
-          final barcode = event.barcodes.first;
+      // Listen to barcode events using onDetect callback (v5.x API)
+      _controller.addListener(() {
+        final barcodes = _controller.barcodes;
+        if (barcodes.isNotEmpty) {
+          final barcode = barcodes.first;
           final rawValue = barcode.rawValue;
-          
+
           // Skip empty barcodes
           if (rawValue == null || rawValue.isEmpty) {
             return;
@@ -47,22 +48,12 @@ class MobileScannerAdapter implements IScannerPort {
           );
           _scanResultsController.add(Right(scanResult));
         }
-
-        // Handle scanner errors
-        if (event.error != null) {
-          _scanResultsController.add(Left(
-            ScannerFailure(
-              message: 'Scanner error: ${event.error}',
-              exception: Exception(event.error),
-            ),
-          ));
-        }
       });
 
       return right(unit);
-    } on MobileScannerException catch (e) {
+    } on ms.MobileScannerException catch (e) {
       return Left(ScannerFailure(
-        message: 'Failed to start scanner: ${e.message}',
+        message: 'Failed to start scanner: ${e.toString()}',
         exception: e,
       ));
     } catch (e) {
@@ -78,16 +69,16 @@ class MobileScannerAdapter implements IScannerPort {
     try {
       // Stop the camera
       _controller.stop();
-      
+
       // Close the stream controller
       if (!_scanResultsController.isClosed) {
         _scanResultsController.close();
       }
 
       return right(unit);
-    } on MobileScannerException catch (e) {
+    } on ms.MobileScannerException catch (e) {
       return Left(ScannerFailure(
-        message: 'Failed to stop scanner: ${e.message}',
+        message: 'Failed to stop scanner: ${e.toString()}',
         exception: e,
       ));
     } catch (e) {
@@ -104,18 +95,19 @@ class MobileScannerAdapter implements IScannerPort {
   @override
   Either<Failure, Unit> toggleFlash(bool enabled) {
     try {
-      // Check if torch is available before toggling
-      if (!_controller.hasTorch) {
+      // Check if torch is available before toggling (v5.x API)
+      if (!_controller.torchEnabled) {
         return Left(ScannerFailure(
           message: 'Device does not have a flash',
         ));
       }
 
-      _controller.toggleFlashlight(on: enabled);
+      // Use setTorchState instead of toggleFlashlight (v5.x API)
+      _controller.setTorchState(enabled ? ms.TorchMode.on : ms.TorchMode.off);
       return right(unit);
-    } on MobileScannerException catch (e) {
+    } on ms.MobileScannerException catch (e) {
       return Left(ScannerFailure(
-        message: 'Failed to toggle flash: ${e.message}',
+        message: 'Failed to toggle flash: ${e.toString()}',
         exception: e,
       ));
     } catch (e) {
@@ -129,11 +121,11 @@ class MobileScannerAdapter implements IScannerPort {
   @override
   Either<Failure, bool> isFlashAvailable() {
     try {
-      final hasTorch = _controller.hasTorch;
+      final hasTorch = _controller.torchEnabled;
       return Right(hasTorch);
-    } on MobileScannerException catch (e) {
+    } on ms.MobileScannerException catch (e) {
       return Left(ScannerFailure(
-        message: 'Failed to check flash availability: ${e.message}',
+        message: 'Failed to check flash availability: ${e.toString()}',
         exception: e,
       ));
     } catch (e) {
@@ -144,29 +136,29 @@ class MobileScannerAdapter implements IScannerPort {
     }
   }
 
-  /// Maps MobileScannerBarcodeType to our BarcodeFormat enum
-  BarcodeFormat _mapBarcodeFormat(MobileScannerBarcodeType format) {
+  /// Maps ms.BarcodeFormat to our BarcodeFormat enum
+  BarcodeFormat _mapBarcodeFormat(ms.BarcodeFormat format) {
     switch (format) {
-      case MobileScannerBarcodeType.ean13:
+      case ms.BarcodeFormat.ean13:
         return BarcodeFormat.ean13;
-      case MobileScannerBarcodeType.ean8:
+      case ms.BarcodeFormat.ean8:
         return BarcodeFormat.ean8;
-      case MobileScannerBarcodeType.qrCode:
+      case ms.BarcodeFormat.qrCode:
         return BarcodeFormat.qrCode;
-      case MobileScannerBarcodeType.code128:
+      case ms.BarcodeFormat.code128:
         return BarcodeFormat.code128;
-      case MobileScannerBarcodeType.code39:
+      case ms.BarcodeFormat.code39:
         return BarcodeFormat.code39;
-      case MobileScannerBarcodeType.upcA:
+      case ms.BarcodeFormat.upcA:
         return BarcodeFormat.upcA;
-      case MobileScannerBarcodeType.upcE:
+      case ms.BarcodeFormat.upcE:
         return BarcodeFormat.upcA; // Treat UPC-E as UPC-A
-      case MobileScannerBarcodeType.codabar:
-      case MobileScannerBarcodeType.itf:
-      case MobileScannerBarcodeType.dataMatrix:
-      case MobileScannerBarcodeType.aztec:
-      case MobileScannerBarcodeType.pdf417:
-      case MobileScannerBarcodeType.unknown:
+      case ms.BarcodeFormat.codabar:
+      case ms.BarcodeFormat.itf:
+      case ms.BarcodeFormat.dataMatrix:
+      case ms.BarcodeFormat.aztec:
+      case ms.BarcodeFormat.pdf417:
+      case ms.BarcodeFormat.unknown:
       default:
         return BarcodeFormat.unknown;
     }

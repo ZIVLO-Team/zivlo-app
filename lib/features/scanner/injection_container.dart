@@ -1,6 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// Global service locator
+import 'package:zivlo/injection_container.dart';
+
 // Domain - Port
 import 'package:zivlo/features/scanner/domain/ports/scanner_port.dart';
 

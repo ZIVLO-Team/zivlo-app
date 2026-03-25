@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../domain/entities/receipt.dart';
+import 'package:zivlo/core/theme/app_theme.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt.dart';
+import 'package:zivlo/features/printer/domain/entities/receipt_item.dart';
 
 /// Receipt Widget
 /// Displays a visual preview of the receipt exactly as it will print
@@ -234,7 +235,7 @@ class ReceiptWidget extends StatelessWidget {
   }
 
   /// Builds a single item row
-  Widget _buildItemRow(dynamic item) {
+  Widget _buildItemRow(ReceiptItem item) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Row(

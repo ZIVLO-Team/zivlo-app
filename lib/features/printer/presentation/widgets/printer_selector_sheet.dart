@@ -70,7 +70,7 @@ class PrinterSelectorSheet extends StatelessWidget {
   /// Builds the header with title and refresh button
   Widget _buildHeader(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.padding16),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.spacing16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -119,7 +119,7 @@ class PrinterSelectorSheet extends StatelessWidget {
   /// Builds discovering state
   Widget _buildDiscoveringState() {
     return const Padding(
-      padding: EdgeInsets.all(AppSpacing.padding32),
+      padding: EdgeInsets.all(AppSpacing.spacing32),
       child: Column(
         children: [
           CircularProgressIndicator(
@@ -232,7 +232,7 @@ class PrinterSelectorSheet extends StatelessWidget {
   /// Builds connected state
   Widget _buildConnectedState(BuildContext context, PrinterDevice device) {
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.padding16),
+      padding: const EdgeInsets.all(AppSpacing.spacing16),
       child: Column(
         children: [
           Icon(
@@ -290,7 +290,7 @@ class PrinterSelectorSheet extends StatelessWidget {
   /// Builds error state
   Widget _buildErrorState(BuildContext context, String message) {
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.padding32),
+      padding: const EdgeInsets.all(AppSpacing.spacing32),
       child: Column(
         children: [
           Icon(
@@ -330,7 +330,7 @@ class PrinterSelectorSheet extends StatelessWidget {
   /// Builds initial state (no printers discovered yet)
   Widget _buildInitialState(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.padding32),
+      padding: const EdgeInsets.all(AppSpacing.spacing32),
       child: Column(
         children: [
           Icon(
@@ -366,7 +366,7 @@ class PrinterSelectorSheet extends StatelessWidget {
   /// Builds no printers found state
   Widget _buildNoPrintersFound() {
     return const Padding(
-      padding: EdgeInsets.all(AppSpacing.padding32),
+      padding: EdgeInsets.all(AppSpacing.spacing32),
       child: Column(
         children: [
           Icon(
