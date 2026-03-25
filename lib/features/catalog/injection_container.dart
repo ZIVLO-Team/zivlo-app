@@ -2,18 +2,19 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Domain - Repository
-import '../domain/repositories/product_repository.dart';
+import '../../domain/repositories/product_repository.dart';
 
 // Infrastructure - Repositories
-import '../infrastructure/repositories/hive_product_repository.dart';
+import '../../infrastructure/repositories/hive_product_repository.dart';
 
 // Application - Use Cases
-import '../application/usecases/product_usecases.dart';
+import '../../application/usecases/product_usecases.dart';
 
 // Presentation - BLoC
-import '../presentation/bloc/catalog_bloc.dart';
+import '../../presentation/bloc/catalog_bloc.dart';
 
-extern GetIt sl;
+/// Global service locator for catalog feature
+final GetIt sl = GetIt.instance;
 
 /// Initialize catalog feature dependencies
 void initializeDependencies() {
