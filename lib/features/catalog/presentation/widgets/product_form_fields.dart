@@ -264,7 +264,7 @@ class ProductBarcodeField extends StatelessWidget {
               color: AppColors.colorOnSurfaceMuted,
             ),
             suffixIcon: IconButton(
-              icon: const Icon(Icons.barcode_scanner),
+              icon: const Icon(Icons.qr_code_scanner),
               color: AppColors.colorAccent,
               onPressed: onScan,
               tooltip: 'Escanear código de barras',
