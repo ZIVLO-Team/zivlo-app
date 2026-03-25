@@ -143,14 +143,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       },
     );
 
-    if (existingProduct == null || existingProduct!.id.isEmpty) {
+    // Validate existing product
+    if (existingProduct == null || existingProduct.id.isEmpty) {
       emit(CatalogError('Product not found'));
       return;
     }
 
     final product = event.product.toEntity(
-      existingProduct!.id,
-      existingProduct!.createdAt,
+      existingProduct.id,
+      existingProduct.createdAt,
     );
 
     final result = await updateProduct.execute(product);
