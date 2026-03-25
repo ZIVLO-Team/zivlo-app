@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../core/error/failures.dart';
+import '../../../../core/error/failures.dart';
 import '../entities/cart.dart';
 import '../entities/cart_item.dart';
 import '../value_objects/discount.dart';

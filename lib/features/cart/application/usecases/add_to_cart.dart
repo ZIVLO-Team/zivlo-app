@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:uuid/uuid.dart';
-import '../../../core/error/failures.dart';
+import '../../../../core/error/failures.dart';
 import '../../domain/entities/cart.dart';
 import '../../domain/entities/cart_item.dart';
 import '../../domain/repositories/cart_repository.dart';

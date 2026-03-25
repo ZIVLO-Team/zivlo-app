@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import '../../domain/value_objects/discount.dart';
 
 part 'discount_hive_model.g.dart';

@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import '../../domain/entities/cart.dart';
 import 'cart_item_hive_model.dart';
 import 'discount_hive_model.dart';

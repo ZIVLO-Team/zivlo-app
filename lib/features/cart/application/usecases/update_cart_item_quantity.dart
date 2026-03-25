@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import '../../../core/error/failures.dart';
+import '../../../../core/error/failures.dart';
 import '../../domain/repositories/cart_repository.dart';
 
 /// Use Case: Update Cart Item Quantity

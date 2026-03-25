@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:fpdart/fpdart.dart';
-import '../../../core/error/failures.dart';
+import '../../../../core/error/failures.dart';
 import '../../../core/error/exceptions.dart';
 import '../../../core/utils/constants.dart';
 import '../../domain/entities/cart.dart';
