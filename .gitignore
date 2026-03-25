@@ -1,0 +1,121 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.pub/
+pubspec.lock
+pubspec_overrides.yaml
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Android
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/**/GeneratedPluginRegistrant.java
+android/**/GeneratedPluginRegistrant.kt
+
+# iOS
+**/DerivedData/
+**/Pods/
+**/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS
+**/DS_Store
+**/XCBuildData/
+**/xcshareddata/
+
+# Windows
+**/CMakeLists.txt
+**/cmake_install.cmake
+**/flutter_windows.dll
+**/Runner.sln
+**/Runner.vcxproj
+**/Runner.vcxproj.filters
+**/Runner_TemporaryKey.pfx
+
+# Linux
+**/Makefile
+**/CMakeLists.txt
+**/cmake_install.cmake
+**/flutter_linux_*.so
+**/libflutter_linux_gtk.so
+
+# Web
+**/web/manifest.json
+**/.dart_tool/
+**/build/
+
+# Testing
+coverage/
+.test_runner/
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.gr.dart
+**/mocks.dart
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Misc
+**/.DS_Store
+**/.gitkeep
+**/Thumbs.db
+
+# Firebase (if used)
+**/google-services.json
+**/GoogleService-Info.plist
+firebase_options.dart
+
+# Secrets
+**/secrets.dart
+**/api_keys.dart
+**/credentials.json
+
+# Build artifacts
+*.apk
+*.aab
+*.ipa
+*.app
+*.exe
+*.dll
+*.so
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# Package manager
+.pnpm-store/
+node_modules/
+
+# Documentation generated
+docs/api/

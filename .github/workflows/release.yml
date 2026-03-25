@@ -1,0 +1,108 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger en tags como v1.0.0, v1.2.3, etc.
+
+jobs:
+  # Job de release que crea el release en GitHub con el APK
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write  # Permiso para crear releases
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: 'stable'
+          cache: true
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Build APK Release
+        run: flutter build apk --release --split-per-abi
+      
+      - name: Build App Bundle Release
+        run: flutter build appbundle --release
+      
+      - name: Generate Changelog
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ github.ref_name }}
+          writeToFile: false
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## 🚀 Cambios en esta versión
+            
+            ${{ steps.changelog.outputs.changes }}
+            
+            ## 📦 Instalación
+            
+            1. Descarga el APK para tu arquitectura:
+               - `app-armeabi-v7a-release.apk` - Dispositivos ARM de 32 bits (la mayoría de dispositivos antiguos)
+               - `app-arm64-v8a-release.apk` - Dispositivos ARM de 64 bits (la mayoría de dispositivos modernos)
+               - `app-x86_64-release.apk` - Dispositivos x86_64 (emuladores, algunos tablets)
+            
+            2. Habilita "Instalar aplicaciones de fuentes desconocidas" en tu Android
+            3. Instala el APK
+            
+            ## 🎯 Requisitos
+            
+            - Android 6.0 (API 23) o superior
+            - Cámara con autofocus (para escaneo)
+            - Impresora térmica Bluetooth (opcional, 58mm o 80mm)
+            
+            ## 📝 Notas
+            
+            - Esta es una versión **offline-first** - no requiere internet
+            - Los datos se almacenan localmente en el dispositivo
+          files: |
+            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+            build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+            build/app/outputs/flutter-apk/app-x86_64-release.apk
+            build/app/outputs/bundle/release/app-release.aab
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Upload Release Assets (APK universal - opcional)
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: build/app/outputs/flutter-apk/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job de notificación de release (opcional)
+  notify-release:
+    name: Notify Release
+    runs-on: ubuntu-latest
+    needs: release
+    if: always()
+    
+    steps:
+      - name: Check release status
+        run: |
+          if [ "${{ needs.release.result }}" == "success" ]; then
+            echo "✅ Release ${{ github.ref_name }} creado exitosamente!"
+          else
+            echo "❌ Error al crear el release"
+            exit 1
+          fi

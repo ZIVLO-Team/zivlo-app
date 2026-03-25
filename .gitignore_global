@@ -1,0 +1,62 @@
+# Git Ignore Rules
+
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.pub/
+pubspec.lock
+pubspec_overrides.yaml
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+# Android
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+
+# iOS
+**/DerivedData/
+**/Pods/
+**/.symlinks/
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.gr.dart
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Build artifacts
+*.apk
+*.aab
+*.ipa
+
+# Secrets
+**/secrets.dart
+**/api_keys.dart
+**/credentials.json
+
+# Testing
+coverage/
+
+# Misc
+**/.DS_Store
+**/.gitkeep
+**/Thumbs.db

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zivlo — Brand Identity</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --c-bg: #0A0A1A;
+    --c-primary: #1A1A2E;
+    --c-surface: #0F3460;
+    --c-accent: #E94560;
+    --c-accent-soft: #FF6B7A;
+    --c-success: #00D97E;
+    --c-warning: #FFB830;
+    --c-white: #FFFFFF;
+    --c-muted: #8899AA;
+    --f-display: 'Syne', sans-serif;
+    --f-body: 'DM Sans', sans-serif;
+    --f-mono: 'Space Mono', monospace;
+  }
+
+  body {
+    background: var(--c-bg);
+    color: var(--c-white);
+    font-family: var(--f-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(233,69,96,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(15,52,96,0.5) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(233,69,96,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(233,69,96,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+  }
+
+  .label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--c-accent);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  /* ── LOGO SVG INLINE ── */
+  .logo-mark {
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .logo-symbol {
+    display: inline-block;
+  }
+
+  .hero-tagline {
+    font-family: var(--f-display);
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .hero-tagline em {
+    font-style: normal;
+    color: var(--c-accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--c-muted);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.8s;
+  }
+
+  .hero-pills {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 1s;
+  }
+
+  .pill {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border: 1px solid rgba(233,69,96,0.3);
+    border-radius: 999px;
+    color: var(--c-accent-soft);
+    background: rgba(233,69,96,0.06);
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding: 96px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--c-accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 800;
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* ── NOMBRE ── */
+  .name-hero {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .name-big {
+    font-family: var(--f-display);
+    font-size: clamp(80px, 15vw, 160px);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 30%, var(--c-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .name-meta {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .name-pronunciation {
+    font-family: var(--f-mono);
+    font-size: 22px;
+    color: var(--c-muted);
+    margin-bottom: 16px;
+  }
+
+  .name-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .letter-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .letter {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--c-accent);
+    width: 32px;
+  }
+
+  .letter-meaning {
+    font-size: 14px;
+    color: var(--c-muted);
+    font-family: var(--f-body);
+  }
+
+  /* ── LOGO SHOWCASE ── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .logo-card {
+    border-radius: 16px;
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255,255,255,0.01) 10px,
+      rgba(255,255,255,0.01) 20px
+    );
+  }
+
+  .logo-card.dark { background: #1A1A2E; border: 1px solid rgba(255,255,255,0.08); }
+  .logo-card.accent { background: var(--c-accent); }
+  .logo-card.light { background: #F0F2F5; }
+  .logo-card.minimal { background: #0A0A1A; border: 1px solid rgba(233,69,96,0.2); }
+
+  .logo-card-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--c-muted);
+    text-transform: uppercase;
+    position: absolute;
+    top: 16px;
+    left: 20px;
+  }
+
+  .logo-card.light .logo-card-label { color: #888; }
+  .logo-card.accent .logo-card-label { color: rgba(255,255,255,0.6); }
+
+  /* ── INLINE SVG LOGO ── */
+  .zivlo-logo-full {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .zivlo-symbol svg {
+    display: block;
+  }
+
+  .zivlo-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── PALETA ── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .swatch {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .swatch-color {
+    height: 80px;
+  }
+
+  .swatch-info {
+    background: rgba(255,255,255,0.04);
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .swatch-name {
+    font-family: var(--f-display);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .swatch-hex {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--c-muted);
+  }
+
+  .swatch-role {
+    font-size: 11px;
+    color: var(--c-muted);
+    margin-top: 3px;
+  }
+
+  /* ── TIPOGRAFÍA ── */
+  .type-samples {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .type-sample {
+    padding: 32px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .type-meta {
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .type-fname {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--c-accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .type-fmeta {
+    font-size: 12px;
+    color: var(--c-muted);
+  }
+
+  .type-preview { flex: 1; }
+
+  /* ── TAGLINES ── */
+  .taglines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .tagline-card {
+    padding: 28px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .tagline-card:hover {
+    border-color: rgba(233,69,96,0.3);
+    transform: translateY(-2px);
+  }
+
+  .tagline-card.featured {
+    border-color: rgba(233,69,96,0.4);
+    background: rgba(233,69,96,0.06);
+  }
+
+  .tagline-context {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--c-accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .tagline-text {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  /* ── APP ICON ── */
+  .icon-showcase {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .app-icon {
+    width: 120px;
+    height: 120px;
+    background: #1A1A2E;
+    border-radius: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 60px rgba(233,69,96,0.25), 0 4px 20px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(233,69,96,0.12), transparent 60%);
+  }
+
+  .app-icon-sm {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: #1A1A2E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  .app-icon-xs {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: #1A1A2E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .icon-sizes {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .icon-caption {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--c-muted);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .icon-size-wrap { display: flex; flex-direction: column; align-items: center; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(233,69,96,0.3), transparent);
+    margin: 0 24px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .name-hero { flex-direction: column; gap: 24px; }
+    .type-sample { flex-direction: column; }
+    .type-meta { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ HERO -->
+<div class="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-content">
+    <p class="label">Brand Identity System · 2024</p>
+
+    <!-- LOGO HERO -->
+    <div class="logo-mark">
+      <div class="zivlo-logo-full" style="justify-content:center;">
+        <div class="zivlo-symbol">
+          <svg width="52" height="72" viewBox="0 0 52 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L44 70 L28 36 H38 Z"
+              fill="#E94560"/>
+          </svg>
+        </div>
+        <div class="zivlo-wordmark" style="font-size:56px; color:#ffffff; line-height:1;">zivlo</div>
+      </div>
+    </div>
+
+    <h1 class="hero-tagline">
+      Cobra en segundos.<br>
+      <em>Sin internet.</em> Sin complicaciones.
+    </h1>
+    <p class="hero-sub">
+      El punto de venta para el comercio latinoamericano real. Tu caja registradora, en tu bolsillo.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">Offline-First</span>
+      <span class="pill">Android</span>
+      <span class="pill">Escaneo + Impresión BT</span>
+      <span class="pill">Latinoamérica</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ NOMBRE -->
+<section>
+  <p class="section-label">01 — Nombre</p>
+  <div class="name-hero">
+    <div class="name-big">Zivlo</div>
+    <div class="name-meta">
+      <p class="name-pronunciation">/ ZIV · lo /</p>
+      <div class="name-breakdown">
+        <div class="letter-row">
+          <span class="letter">Z</span>
+          <span class="letter-meaning">Velocidad, energía, diferenciación</span>
+        </div>
+        <div class="letter-row">
+          <span class="letter">iv</span>
+          <span class="letter-meaning">Vivo, activo, en tiempo real</span>
+        </div>
+        <div class="letter-row">
+          <span class="letter">lo</span>
+          <span class="letter-meaning">Cierre corto y rotundo, memorable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="color:var(--c-muted); font-size:15px; max-width:600px; line-height:1.7;">
+    Nombre inventado, dos sílabas, sin significado previo en ningún idioma.
+    Evita connotaciones negativas en todos los mercados latinoamericanos.
+    Fácil de pronunciar, escribir y recordar para hablantes de español.
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ LOGO -->
+<section>
+  <p class="section-label">02 — Logo & Símbolo</p>
+  <h2 class="section-title">El Rayo del Recibo</h2>
+
+  <div class="logo-grid">
+
+    <!-- Version principal oscura -->
+    <div class="logo-card dark">
+      <span class="logo-card-label">Principal</span>
+      <div class="zivlo-logo-full">
+        <svg width="44" height="60" viewBox="0 0 52 72" fill="none">
+          <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#E94560"/>
+        </svg>
+        <span class="zivlo-wordmark" style="font-size:42px; color:#fff;">zivlo</span>
+      </div>
+    </div>
+
+    <!-- Version sobre fondo accent -->
+    <div class="logo-card accent">
+      <span class="logo-card-label" style="color:rgba(255,255,255,0.6);">Sobre accent</span>
+      <div class="zivlo-logo-full">
+        <svg width="44" height="60" viewBox="0 0 52 72" fill="none">
+          <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#fff"/>
+        </svg>
+        <span class="zivlo-wordmark" style="font-size:42px; color:#fff;">zivlo</span>
+      </div>
+    </div>
+
+    <!-- Version sobre fondo claro -->
+    <div class="logo-card light">
+      <span class="logo-card-label" style="color:#999;">Sobre claro</span>
+      <div class="zivlo-logo-full">
+        <svg width="44" height="60" viewBox="0 0 52 72" fill="none">
+          <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#E94560"/>
+        </svg>
+        <span class="zivlo-wordmark" style="font-size:42px; color:#1A1A2E;">zivlo</span>
+      </div>
+    </div>
+
+    <!-- Solo símbolo -->
+    <div class="logo-card minimal">
+      <span class="logo-card-label">Solo símbolo</span>
+      <svg width="64" height="88" viewBox="0 0 52 72" fill="none">
+        <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#E94560"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- App Icon showcase -->
+  <h3 style="font-family:var(--f-display); font-size:20px; margin-bottom:32px; color:var(--c-muted);">Ícono de App</h3>
+  <div class="icon-showcase">
+    <div class="app-icon">
+      <svg width="64" height="88" viewBox="0 0 52 72" fill="none" style="position:relative;z-index:1;">
+        <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#E94560"/>
+      </svg>
+    </div>
+    <div>
+      <div class="icon-sizes">
+        <div class="icon-size-wrap">
+          <div class="app-icon-sm">
+            <svg width="34" height="46" viewBox="0 0 52 72" fill="none">
+              <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#E94560"/>
+            </svg>
+          </div>
+          <p class="icon-caption">64px</p>
+        </div>
+        <div class="icon-size-wrap">
+          <div class="app-icon-xs">
+            <svg width="22" height="30" viewBox="0 0 52 72" fill="none">
+              <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#E94560"/>
+            </svg>
+          </div>
+          <p class="icon-caption">40px</p>
+        </div>
+      </div>
+      <p style="color:var(--c-muted); font-size:13px; margin-top:20px; max-width:320px; line-height:1.6;">
+        Fondo <span style="font-family:var(--f-mono); color:var(--c-accent);">#1A1A2E</span> con símbolo
+        <span style="font-family:var(--f-mono); color:var(--c-accent);">#E94560</span>.
+        Sin texto — legible a todos los tamaños.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ PALETA -->
+<section>
+  <p class="section-label">03 — Paleta de Colores</p>
+  <h2 class="section-title">Sistema cromático</h2>
+
+  <div class="palette-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E94560;"></div>
+      <div class="swatch-info">
+        <p class="swatch-name">Accent</p>
+        <p class="swatch-hex">#E94560</p>
+        <p class="swatch-role">CTAs · Total · Logo</p>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1A1A2E;"></div>
+      <div class="swatch-info">
+        <p class="swatch-name">Primary</p>
+        <p class="swatch-hex">#1A1A2E</p>
+        <p class="swatch-role">AppBar · Fondo ícono</p>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0F3460;"></div>
+      <div class="swatch-info">
+        <p class="swatch-name">Surface</p>
+        <p class="swatch-hex">#0F3460</p>
+        <p class="swatch-role">Cards · Sheets</p>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#00D97E;"></div>
+      <div class="swatch-info">
+        <p class="swatch-name">Success</p>
+        <p class="swatch-hex">#00D97E</p>
+        <p class="swatch-role">Confirmación · Stock</p>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FFB830;"></div>
+      <div class="swatch-info">
+        <p class="swatch-name">Warning</p>
+        <p class="swatch-hex">#FFB830</p>
+        <p class="swatch-role">Cambio · Alertas</p>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0A0A1A;"></div>
+      <div class="swatch-info">
+        <p class="swatch-name">Background</p>
+        <p class="swatch-hex">#0A0A1A</p>
+        <p class="swatch-role">Fondo base de la app</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ TIPOGRAFÍA -->
+<section>
+  <p class="section-label">04 — Tipografía</p>
+  <h2 class="section-title">Sistema tipográfico</h2>
+
+  <div class="type-samples">
+    <div class="type-sample">
+      <div class="type-meta">
+        <p class="type-fname">Syne</p>
+        <p class="type-fmeta">Display · Headlines<br>Weight 700–800</p>
+      </div>
+      <div class="type-preview">
+        <p style="font-family:'Syne',sans-serif; font-weight:800; font-size:48px; line-height:1.1; letter-spacing:-0.01em;">Zivlo</p>
+        <p style="font-family:'Syne',sans-serif; font-weight:700; font-size:22px; color:var(--c-muted); margin-top:8px;">Cobra en segundos, sin internet</p>
+      </div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-meta">
+        <p class="type-fname">DM Sans</p>
+        <p class="type-fmeta">Body · UI · Botones<br>Weight 300–600</p>
+      </div>
+      <div class="type-preview">
+        <p style="font-family:'DM Sans',sans-serif; font-weight:500; font-size:20px;">Gestión de catálogo y facturación</p>
+        <p style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:15px; color:var(--c-muted); margin-top:8px;">Agrega productos, escanea códigos y cobra sin necesidad de internet ni hardware costoso.</p>
+      </div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-meta">
+        <p class="type-fname">Space Mono</p>
+        <p class="type-fmeta">Números · Precios<br>Recibos · Monoespaciado</p>
+      </div>
+      <div class="type-preview">
+        <p style="font-family:'Space Mono',monospace; font-weight:700; font-size:40px; color:var(--c-accent);">$1,250.00</p>
+        <p style="font-family:'Space Mono',monospace; font-size:13px; color:var(--c-muted); margin-top:8px; line-height:1.8;">
+          Café americano ×2 ........ $60.00<br>
+          Pan dulce surtido ×3 .... $45.00<br>
+          ─────────────────────────<br>
+          <span style="color:var(--c-white);">TOTAL ................... $105.00</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ TAGLINES -->
+<section>
+  <p class="section-label">05 — Taglines</p>
+  <h2 class="section-title">Voz de la marca</h2>
+
+  <div class="taglines-grid">
+    <div class="tagline-card featured">
+      <p class="tagline-context">Principal</p>
+      <p class="tagline-text">Cobra en segundos. Sin internet. Sin complicaciones.</p>
+    </div>
+    <div class="tagline-card">
+      <p class="tagline-context">Play Store</p>
+      <p class="tagline-text">El punto de venta en tu bolsillo</p>
+    </div>
+    <div class="tagline-card">
+      <p class="tagline-context">Redes sociales</p>
+      <p class="tagline-text">Escanea. Cobra. Imprime.</p>
+    </div>
+    <div class="tagline-card">
+      <p class="tagline-context">Mercados / stands</p>
+      <p class="tagline-text">Factura donde sea, con lo que tienes</p>
+    </div>
+    <div class="tagline-card">
+      <p class="tagline-context">B2B / vendedores</p>
+      <p class="tagline-text">Tu caja registradora, sin la caja</p>
+    </div>
+    <div class="tagline-card">
+      <p class="tagline-context">Pitch técnico</p>
+      <p class="tagline-text">POS offline-first para el comercio real</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ FOOTER -->
+<footer style="padding:60px 24px; text-align:center;">
+  <div class="zivlo-logo-full" style="justify-content:center; margin-bottom:20px;">
+    <svg width="28" height="38" viewBox="0 0 52 72" fill="none">
+      <path d="M38 2 L14 36 H24 L6 70 H9 L13 63 L17 70 L21 63 L25 70 L29 63 L33 70 L37 63 L41 70 H44 L28 36 H38 Z" fill="#E94560"/>
+    </svg>
+    <span class="zivlo-wordmark" style="font-size:28px; color:#ffffff;">zivlo</span>
+  </div>
+  <p style="font-family:var(--f-mono); font-size:11px; color:var(--c-muted); letter-spacing:0.1em;">
+    BRAND IDENTITY SYSTEM · FLUTTER BILLING APP · LATINOAMÉRICA
+  </p>
+</footer>
+
+</body>
+</html>

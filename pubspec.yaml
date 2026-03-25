@@ -1,0 +1,81 @@
+name: zivlo
+description: Punto de venta offline-first para pequeños comercios en Latinoamérica
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # BLoC - State Management
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
+
+  # Base de datos local - Hive
+  hive_flutter: ^1.1.0
+  hive_generator: ^2.0.1
+
+  # Navegación - GoRouter
+  go_router: ^13.2.0
+
+  # Manejo funcional de errores - fpdart
+  fpdart: ^1.1.0
+
+  # Hardware - Escáner de código de barras
+  mobile_scanner: ^5.1.1
+
+  # Hardware - Impresora Bluetooth
+  bluetooth_thermal: ^0.3.1
+  # Alternativa: esc_pos_bluetooth: ^0.4.0
+
+  # Inyección de dependencias - GetIt
+  get_it: ^7.6.4
+
+  # Utils
+  equatable: ^2.0.5
+  uuid: ^4.3.3
+  intl: ^0.19.0
+
+  # Fonts de Google
+  google_fonts: ^6.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Generación de código
+  build_runner: ^2.4.8
+
+  # Testing
+  bloc_test: ^9.1.5
+  mocktail: ^1.0.2
+
+  # Linting
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Space Mono
+      fonts:
+        - asset: assets/fonts/SpaceMono-Regular.ttf
+        - asset: assets/fonts/SpaceMono-Bold.ttf
+          weight: 700
+    - family: DM Sans
+      fonts:
+        - asset: assets/fonts/DMSans-Regular.ttf
+        - asset: assets/fonts/DMSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/DMSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/DMSans-Bold.ttf
+          weight: 700
