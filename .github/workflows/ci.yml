@@ -93,7 +93,10 @@ jobs:
       
       - name: Get dependencies
         run: flutter pub get
-      
+
+      - name: Initialize Android project
+        run: bash scripts/init-android.sh
+
       - name: Build APK Release
         run: flutter build apk --release --split-per-abi
       
@@ -128,7 +131,10 @@ jobs:
       
       - name: Get dependencies
         run: flutter pub get
-      
+
+      - name: Initialize Android project
+        run: bash scripts/init-android.sh
+
       - name: Build App Bundle Release
         run: flutter build appbundle --release
       
